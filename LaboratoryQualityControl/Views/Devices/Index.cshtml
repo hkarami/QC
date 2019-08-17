@@ -1,0 +1,137 @@
+﻿@model IEnumerable<LaboratoryQualityControl.Models.Device>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Factory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufacturingCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeaturedUsers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentificationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSubmittedToLab)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SectionLaunchDATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialCharacteristic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedEquipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneToSupportCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LaboratorySections)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Other)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Factory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufacturingCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupportCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeaturedUsers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentificationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSubmittedToLab)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionLaunchDATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialCharacteristic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedEquipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneToSupportCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaboratorySections.SectionCodeLab)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeviceCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DeviceCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DeviceCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

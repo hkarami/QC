@@ -1,0 +1,36 @@
+﻿@model LaboratoryQualityControl.Models.LaboratorySections
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LaboratorySections</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionNameLab)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SectionNameLab)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InOrder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InOrder)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecordTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SectionCodeLab">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
