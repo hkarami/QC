@@ -1,0 +1,78 @@
+﻿@model LaboratoryQualityControl.Models.DeviceMaintenance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeviceMaintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ControlledFactor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ControlledFactor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DoTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DoTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Result)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Result)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RemediesAndCorrectiveAction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RemediesAndCorrectiveAction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateRecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateRecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmUser.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FunctorUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FunctorUser.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Device.DeviceCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.DeviceMaintenanceID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

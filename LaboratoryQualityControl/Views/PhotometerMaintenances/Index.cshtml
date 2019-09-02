@@ -1,0 +1,149 @@
+﻿@model IEnumerable<LaboratoryQualityControl.Models.PhotometerMaintenance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceWash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GasJunction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PipesAndSuckers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Glass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kiln)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chimney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetDeviceZero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pipeLeaky)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReplaceAnyComponent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DischargeDishesWaste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compressor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateRecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFunctor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserConfirm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceWash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GasJunction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PipesAndSuckers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Glass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kiln)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chimney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetDeviceZero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pipeLeaky)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplaceAnyComponent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DischargeDishesWaste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compressor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateRecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFunctor.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserConfirm.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PhotometerMaintenanceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PhotometerMaintenanceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PhotometerMaintenanceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

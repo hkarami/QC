@@ -23,5 +23,6 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime{ get; set; }
         public virtual ICollection<Device> Devices { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

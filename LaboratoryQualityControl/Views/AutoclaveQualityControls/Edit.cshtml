@@ -1,0 +1,89 @@
+﻿@model LaboratoryQualityControl.Models.AutoclaveQualityControl
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>AutoclaveQualityControl</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AutoclaveQualityControlID" />
+            <div class="form-group">
+                <label asp-for="DeviceCode" class="control-label"></label>
+                <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+                <span asp-validation-for="DeviceCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoTime" class="control-label"></label>
+                <input asp-for="DoTime" class="form-control" />
+                <span asp-validation-for="DoTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCodeFunctor" class="control-label"></label>
+                <select asp-for="UserCodeFunctor" class="form-control" asp-items="ViewBag.UserCodeFunctor"></select>
+                <span asp-validation-for="UserCodeFunctor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeatDuringDeployment" class="control-label"></label>
+                <input asp-for="HeatDuringDeployment" class="form-control" />
+                <span asp-validation-for="HeatDuringDeployment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PressureDuringDeployment" class="control-label"></label>
+                <input asp-for="PressureDuringDeployment" class="form-control" />
+                <span asp-validation-for="PressureDuringDeployment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurposeOfUse" class="control-label"></label>
+                <input asp-for="PurposeOfUse" class="form-control" />
+                <span asp-validation-for="PurposeOfUse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultTST" class="control-label"></label>
+                <input asp-for="ResultTST" class="form-control" />
+                <span asp-validation-for="ResultTST" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultBiologic" class="control-label"></label>
+                <input asp-for="ResultBiologic" class="form-control" />
+                <span asp-validation-for="ResultBiologic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCode" class="control-label"></label>
+                <select asp-for="UserCode" class="form-control" asp-items="ViewBag.UserCode"></select>
+                <span asp-validation-for="UserCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateRecordTime" class="control-label"></label>
+                <input asp-for="UpdateRecordTime" class="form-control" />
+                <span asp-validation-for="UpdateRecordTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordTime" class="control-label"></label>
+                <input asp-for="RecordTime" class="form-control" />
+                <span asp-validation-for="RecordTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

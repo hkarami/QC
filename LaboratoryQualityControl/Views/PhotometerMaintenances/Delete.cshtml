@@ -1,0 +1,141 @@
+﻿@model LaboratoryQualityControl.Models.PhotometerMaintenance
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PhotometerMaintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DoTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceWash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceWash)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GasJunction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GasJunction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PipesAndSuckers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PipesAndSuckers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Filter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Filter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Glass)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Glass)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Kiln)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kiln)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chimney)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chimney)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SetDeviceZero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SetDeviceZero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pipeLeaky)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pipeLeaky)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplaceAnyComponent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReplaceAnyComponent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DischargeDishesWaste)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DischargeDishesWaste)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Compressor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Compressor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateRecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateRecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Device.DeviceCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFunctor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserFunctor.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserConfirm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserConfirm.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PhotometerMaintenanceID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

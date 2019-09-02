@@ -1,0 +1,113 @@
+﻿@model IEnumerable<LaboratoryQualityControl.Models.SpectrophotometerMaintenance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetDeviceZero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LightBulbClean)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BulbReplacement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MirrorSwitch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MirrorClean)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MirrorAdjustment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateRecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFunctor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserConfirm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetDeviceZero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LightBulbClean)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BulbReplacement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MirrorSwitch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MirrorClean)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MirrorAdjustment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateRecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFunctor.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserConfirm.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SpectrophotometerMaintenanceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SpectrophotometerMaintenanceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SpectrophotometerMaintenanceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

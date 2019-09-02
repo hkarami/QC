@@ -1,0 +1,90 @@
+﻿@model LaboratoryQualityControl.Models.WaterBathMaintenance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WaterBathMaintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DoTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperatures)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Temperatures)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterExchange)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WaterExchange)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sedimentation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sedimentation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Clean)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Clean)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateRecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateRecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecordTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Device.DeviceCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFunctor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserFunctor.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserConfirm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserConfirm.FName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.WaterBathMaintenanceID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

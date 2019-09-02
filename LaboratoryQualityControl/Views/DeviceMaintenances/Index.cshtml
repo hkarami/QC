@@ -1,0 +1,89 @@
+﻿@model IEnumerable<LaboratoryQualityControl.Models.DeviceMaintenance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ControlledFactor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemediesAndCorrectiveAction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateRecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FunctorUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ControlledFactor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemediesAndCorrectiveAction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateRecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmUser.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FunctorUser.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceCode)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeviceMaintenanceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DeviceMaintenanceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DeviceMaintenanceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

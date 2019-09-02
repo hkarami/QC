@@ -1,0 +1,107 @@
+﻿@model IEnumerable<LaboratoryQualityControl.Models.ServiceDevice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExitTimeOfWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactTimeForSupportCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserCodeDisinfectantDevice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportCompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceMenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionOfRepairCompleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeReturnToWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicalApproval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationService)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExitTimeOfWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactTimeForSupportCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserCodeDisinfectantDevice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupportCompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceMenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionOfRepairCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeReturnToWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicalApproval)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationService.LocationServiceName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ServiceDeviceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ServiceDeviceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ServiceDeviceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
