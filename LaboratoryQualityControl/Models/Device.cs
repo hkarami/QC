@@ -81,5 +81,12 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         public virtual LaboratorySections LaboratorySections { get; set; }
         public virtual ICollection<LogBookDevice> LogBookDevices { get; set; }
+        public virtual ICollection<AutoclaveQualityControl> AutoclaveQualityControls { get; set; }
+        public virtual ICollection<DeviceMaintenance> DeviceMaintenances { get; set; }
+        public virtual ICollection<IncubatorMaintenance> IncubatorMaintenances { get; set; }
+        public virtual ICollection<WaterBathMaintenance> WaterBathMaintenances { get; set; } 
+        public virtual ICollection<SpectrophotometerMaintenance> SpectrophotometerMaintenances { get; set; }
+        public virtual ICollection<PhotometerMaintenance> PhotometerMaintenances { get; set; }
+        
     }
 }   

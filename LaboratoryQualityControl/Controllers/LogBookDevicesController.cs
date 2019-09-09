@@ -48,8 +48,9 @@ namespace LaboratoryQualityControl.Controllers
         // GET: LogBookDevices/Create
         public IActionResult Create()
         {
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode");
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName");
+            
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceType");
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName");
             return View();
         }
 

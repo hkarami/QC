@@ -31,10 +31,10 @@
                 @Html.DisplayNameFor(model => model.RecordTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.User.NickName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Device)
+                @Html.DisplayNameFor(model => model.Device.DeviceType)
             </th>
             <th></th>
         </tr>
@@ -61,15 +61,15 @@
                 @Html.DisplayFor(modelItem => item.RecordTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.FName)
+                @Html.DisplayFor(modelItem => item.User.NickName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Device.DeviceCode)
+                @Html.DisplayFor(modelItem => item.Device.DeviceType)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdLogBook">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdLogBook">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdLogBook">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdLogBook">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.IdLogBook">شرح</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdLogBook">حذف</a>
             </td>
         </tr>
 }

@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.User.Include(u => u.Role);
+            var laboratoryQCContext = _context.User.Include(u => u.BloodType).Include(u => u.EducationalCertificate).Include(u => u.EmploymentStatus).Include(u => u.LaboratorySections).Include(u => u.MaritalStatus).Include(u => u.Role);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -34,6 +34,11 @@ namespace LaboratoryQualityControl.Controllers
             }
 
             var user = await _context.User
+                .Include(u => u.BloodType)
+                .Include(u => u.EducationalCertificate)
+                .Include(u => u.EmploymentStatus)
+                .Include(u => u.LaboratorySections)
+                .Include(u => u.MaritalStatus)
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(m => m.UserCode == id);
             if (user == null)
@@ -47,6 +52,11 @@ namespace LaboratoryQualityControl.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
+            ViewData["BloodTypeID"] = new SelectList(_context.BloodTypes, "BloodTypeID", "BloodTypeName");
+            ViewData["EducationalCertificateID"] = new SelectList(_context.EducationalCertificates, "EducationalCertificateId", "EducationalCertificateName");
+            ViewData["EmploymentStatusID"] = new SelectList(_context.EmploymentStatuses, "EmploymentStatusID", "EmploymentStatusName");
+            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab");
+            ViewData["MaritalStatusID"] = new SelectList(_context.MaritalStatuses, "MaritalStatusID", "MaritalStatusName");
             ViewData["RoleCode"] = new SelectList(_context.Roles, "RoleCode", "RoleName");
             return View();
         }
@@ -56,7 +66,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserCode,UserName,PassWord,RoleCode,LName,FName,NickName,Sex,BirthDate,ExpireTime,Picture,EnterNum,Email,Telephone,RecordTime")] User user)
+        public async Task<IActionResult> Create([Bind("UserCode,UserName,PassWord,RoleCode,LName,FName,NickName,Sex,BirthDate,ExpireTime,Picture,EnterNum,Email,MaritalStatusID,NumberID,Issued,FatherName,EducationalCertificateID,UniversityName,YearGet,Address,Telephone,TelephoneNecessary,BloodTypeID,DrugSensitivity,BeginTime,SectionCodeLab,EmploymentStatusID,HistoryVaccination,HistoryOfOccupationalInjury,RecordTime")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +74,11 @@ namespace LaboratoryQualityControl.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BloodTypeID"] = new SelectList(_context.BloodTypes, "BloodTypeID", "BloodTypeName", user.BloodTypeID);
+            ViewData["EducationalCertificateID"] = new SelectList(_context.EducationalCertificates, "EducationalCertificateId", "EducationalCertificateName", user.EducationalCertificateID);
+            ViewData["EmploymentStatusID"] = new SelectList(_context.EmploymentStatuses, "EmploymentStatusID", "EmploymentStatusName", user.EmploymentStatusID);
+            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", user.SectionCodeLab);
+            ViewData["MaritalStatusID"] = new SelectList(_context.MaritalStatuses, "MaritalStatusID", "MaritalStatusName", user.MaritalStatusID);
             ViewData["RoleCode"] = new SelectList(_context.Roles, "RoleCode", "RoleName", user.RoleCode);
             return View(user);
         }
@@ -81,6 +96,11 @@ namespace LaboratoryQualityControl.Controllers
             {
                 return NotFound();
             }
+            ViewData["BloodTypeID"] = new SelectList(_context.BloodTypes, "BloodTypeID", "BloodTypeName", user.BloodTypeID);
+            ViewData["EducationalCertificateID"] = new SelectList(_context.EducationalCertificates, "EducationalCertificateId", "EducationalCertificateName", user.EducationalCertificateID);
+            ViewData["EmploymentStatusID"] = new SelectList(_context.EmploymentStatuses, "EmploymentStatusID", "EmploymentStatusName", user.EmploymentStatusID);
+            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", user.SectionCodeLab);
+            ViewData["MaritalStatusID"] = new SelectList(_context.MaritalStatuses, "MaritalStatusID", "MaritalStatusName", user.MaritalStatusID);
             ViewData["RoleCode"] = new SelectList(_context.Roles, "RoleCode", "RoleName", user.RoleCode);
             return View(user);
         }
@@ -90,7 +110,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserCode,UserName,PassWord,RoleCode,LName,FName,NickName,Sex,BirthDate,ExpireTime,Picture,EnterNum,Email,Telephone,RecordTime")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserCode,UserName,PassWord,RoleCode,LName,FName,NickName,Sex,BirthDate,ExpireTime,Picture,EnterNum,Email,MaritalStatusID,NumberID,Issued,FatherName,EducationalCertificateID,UniversityName,YearGet,Address,Telephone,TelephoneNecessary,BloodTypeID,DrugSensitivity,BeginTime,SectionCodeLab,EmploymentStatusID,HistoryVaccination,HistoryOfOccupationalInjury,RecordTime")] User user)
         {
             if (id != user.UserCode)
             {
@@ -117,6 +137,11 @@ namespace LaboratoryQualityControl.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BloodTypeID"] = new SelectList(_context.BloodTypes, "BloodTypeID", "BloodTypeName", user.BloodTypeID);
+            ViewData["EducationalCertificateID"] = new SelectList(_context.EducationalCertificates, "EducationalCertificateId", "EducationalCertificateName", user.EducationalCertificateID);
+            ViewData["EmploymentStatusID"] = new SelectList(_context.EmploymentStatuses, "EmploymentStatusID", "EmploymentStatusName", user.EmploymentStatusID);
+            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", user.SectionCodeLab);
+            ViewData["MaritalStatusID"] = new SelectList(_context.MaritalStatuses, "MaritalStatusID", "MaritalStatusName", user.MaritalStatusID);
             ViewData["RoleCode"] = new SelectList(_context.Roles, "RoleCode", "RoleName", user.RoleCode);
             return View(user);
         }
@@ -130,6 +155,11 @@ namespace LaboratoryQualityControl.Controllers
             }
 
             var user = await _context.User
+                .Include(u => u.BloodType)
+                .Include(u => u.EducationalCertificate)
+                .Include(u => u.EmploymentStatus)
+                .Include(u => u.LaboratorySections)
+                .Include(u => u.MaritalStatus)
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(m => m.UserCode == id);
             if (user == null)

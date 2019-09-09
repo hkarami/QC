@@ -1,0 +1,153 @@
+﻿@model LaboratoryQualityControl.Models.PhotometerMaintenance
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>PhotometerMaintenance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PhotometerMaintenanceID" />
+            <div class="form-group">
+                <label asp-for="DeviceCode" class="control-label"></label>
+                <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+                <span asp-validation-for="DeviceCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoTime" class="control-label"></label>
+                <input asp-for="DoTime" class="form-control" />
+                <span asp-validation-for="DoTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCodeFunctor" class="control-label"></label>
+                <select asp-for="UserCodeFunctor" class="form-control" asp-items="ViewBag.UserCodeFunctor"></select>
+                <span asp-validation-for="UserCodeFunctor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="DeviceWash" /> @Html.DisplayNameFor(model => model.DeviceWash)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="GasJunction" /> @Html.DisplayNameFor(model => model.GasJunction)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="PipesAndSuckers" /> @Html.DisplayNameFor(model => model.PipesAndSuckers)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Filter" /> @Html.DisplayNameFor(model => model.Filter)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Glass" /> @Html.DisplayNameFor(model => model.Glass)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Kiln" /> @Html.DisplayNameFor(model => model.Kiln)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Chimney" /> @Html.DisplayNameFor(model => model.Chimney)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="SetDeviceZero" /> @Html.DisplayNameFor(model => model.SetDeviceZero)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="pipeLeaky" /> @Html.DisplayNameFor(model => model.pipeLeaky)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ReplaceAnyComponent" /> @Html.DisplayNameFor(model => model.ReplaceAnyComponent)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="DischargeDishesWaste" /> @Html.DisplayNameFor(model => model.DischargeDishesWaste)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Compressor" /> @Html.DisplayNameFor(model => model.Compressor)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCodeConfirm" class="control-label"></label>
+                <select asp-for="UserCodeConfirm" class="form-control" asp-items="ViewBag.UserCodeConfirm"></select>
+                <span asp-validation-for="UserCodeConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCode" class="control-label"></label>
+                <select asp-for="UserCode" class="form-control" asp-items="ViewBag.UserCode"></select>
+                <span asp-validation-for="UserCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateRecordTime" class="control-label"></label>
+                <input asp-for="UpdateRecordTime" class="form-control" />
+                <span asp-validation-for="UpdateRecordTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecordTime" class="control-label"></label>
+                <input asp-for="RecordTime" class="form-control" />
+                <span asp-validation-for="RecordTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
