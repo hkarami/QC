@@ -1,29 +1,33 @@
 ﻿@model IEnumerable<LaboratoryQualityControl.Models.Device>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "شناسنامه تجهیزات";
 }
 
-<h2>Index</h2>
+    <h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">جدید</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.DeviceType)
+                @Html.DisplayNameFor(model => model.DeviceName)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DeviceTypeID)
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Factory)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Model)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ManufacturingCountry)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.SerialNumber)
             </th>
@@ -33,39 +37,24 @@
             <th>
                 @Html.DisplayNameFor(model => model.Location)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.FeaturedUsers)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.IdentificationCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateSubmittedToLab)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SectionLaunchDATE)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeliveryStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpecialCharacteristic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RelatedEquipment)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PhoneToSupportCompany)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LaboratorySections)
+                @Html.DisplayNameFor(model => model.SectionCodeLab)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Other)
-            </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.RecordTime)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -73,17 +62,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DeviceType)
+                @Html.DisplayFor(modelItem => item.DeviceName)
             </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DeviceType.DeviceTypeName)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Factory)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Model)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ManufacturingCountry)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.SerialNumber)
             </td>
@@ -93,43 +85,29 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.FeaturedUsers)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.IdentificationCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateSubmittedToLab)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.SectionLaunchDATE)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialCharacteristic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RelatedEquipment)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneToSupportCompany)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LaboratorySections.SectionCodeLab)
+                @Html.DisplayFor(modelItem => item.LaboratorySections.SectionNameLab)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Other)
-            </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.RecordTime)
-            </td>
+            </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.DeviceCode">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DeviceCode">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DeviceCode">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.DeviceCode">ویرایش</a> |
+                @*<a asp-action="Details" asp-route-id="@item.DeviceCode">جزئیات</a>|*@
+                <a asp-action="Delete" asp-route-id="@item.DeviceCode">حذف</a>
             </td>
         </tr>
 }

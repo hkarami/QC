@@ -108,7 +108,7 @@ namespace LaboratoryQualityControl.Models
         public virtual LaboratorySections LaboratorySections { get; set; }
         public virtual EmploymentStatus EmploymentStatus { get; set; }
         #endregion
-
+        public virtual ICollection<Device> Devices { get; set; }
         public virtual ICollection<LogBookDevice> LogBookDevices { get; set; }
         
         #region DeviceMaintenance

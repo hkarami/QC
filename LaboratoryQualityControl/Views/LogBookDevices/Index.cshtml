@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Device.DeviceName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DoTime)
             </th>
             <th>
@@ -33,15 +36,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.User.NickName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Device.DeviceType)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DoTime)
             </td>
@@ -63,12 +67,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User.NickName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.DeviceType)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdLogBook">ویرایش</a> |
-                <a asp-action="Details" asp-route-id="@item.IdLogBook">شرح</a> |
+                @*<a asp-action="Details" asp-route-id="@item.IdLogBook">شرح</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.IdLogBook">حذف</a>
             </td>
         </tr>

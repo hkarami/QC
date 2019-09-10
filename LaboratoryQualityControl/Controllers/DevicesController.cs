@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: Devices
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.Devices.Include(d => d.LaboratorySections);
+            var laboratoryQCContext = _context.Devices.Include(d => d.LaboratorySections).Include(d=>d.DeviceType).Include(d=>d.User);
             return View(await laboratoryQCContext.ToListAsync());
             //return View();
         }
@@ -48,7 +48,9 @@ namespace LaboratoryQualityControl.Controllers
         // GET: Devices/Create
         public IActionResult Create()
         {
-            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionNameLab");
+            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o=>o.InOrder), "SectionCodeLab", "SectionNameLab");
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName");
+            ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName");
             return View();
         }
 
@@ -57,15 +59,20 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DeviceCode,DeviceType,Factory,Model,ManufacturingCountry,SerialNumber,SupportCompany,Location,FeaturedUsers,IdentificationCode,DateSubmittedToLab,SectionLaunchDATE,DeliveryStatus,SpecialCharacteristic,RelatedEquipment,PhoneToSupportCompany,SectionCodeLab,Other,RecordTime")] Device device)
+        public async Task<IActionResult> Create([Bind("DeviceCode,DeviceName,DeviceTypeID,Factory,Model,ManufacturingCountry,SerialNumber,SupportCompany,Location,FeaturedUsers,IdentificationCode,DateSubmittedToLab,SectionLaunchDATE,DeliveryStatus,SpecialCharacteristic,RelatedEquipment,PhoneToSupportCompany,SectionCodeLab,Other,UserCode,UpdateRecordTime,RecordTime")] Device device)
         {
             if (ModelState.IsValid)
             {
+                device.RecordTime = DateTime.Now;
+                device.UpdateRecordTime = DateTime.Now;
                 _context.Add(device);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
+            //ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
+            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab",device.SectionCodeLab);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName",device.DeviceTypeID);
+            ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName",device.UserCode);
             return View(device);
         }
 
@@ -82,7 +89,9 @@ namespace LaboratoryQualityControl.Controllers
             {
                 return NotFound();
             }
-            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionNameLab", device.SectionCodeLab);
+            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab", device.SectionCodeLab);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeID);
+            ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName", device.UserCode);
             return View(device);
         }
 
@@ -91,7 +100,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DeviceCode,DeviceType,Factory,Model,ManufacturingCountry,SerialNumber,SupportCompany,Location,FeaturedUsers,IdentificationCode,DateSubmittedToLab,SectionLaunchDATE,DeliveryStatus,SpecialCharacteristic,RelatedEquipment,PhoneToSupportCompany,SectionCodeLab,Other,RecordTime")] Device device)
+        public async Task<IActionResult> Edit(int id, [Bind("DeviceCode,DeviceName,DeviceTypeID,Factory,Model,ManufacturingCountry,SerialNumber,SupportCompany,Location,FeaturedUsers,IdentificationCode,DateSubmittedToLab,SectionLaunchDATE,DeliveryStatus,SpecialCharacteristic,RelatedEquipment,PhoneToSupportCompany,SectionCodeLab,Other,UserCode,UpdateRecordTime,RecordTime")] Device device)
         {
             if (id != device.DeviceCode)
             {
@@ -102,6 +111,7 @@ namespace LaboratoryQualityControl.Controllers
             {
                 try
                 {
+                    device.UpdateRecordTime = DateTime.Now;
                     _context.Update(device);
                     await _context.SaveChangesAsync();
                 }
@@ -118,7 +128,10 @@ namespace LaboratoryQualityControl.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
+            //ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
+            ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab", device.SectionCodeLab);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeID);
+            ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName", device.UserCode);
             return View(device);
         }
 

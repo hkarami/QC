@@ -31,6 +31,7 @@ namespace LaboratoryQualityControl.Models
         public DbSet<EducationalCertificate> EducationalCertificates { get; set; }
         public DbSet<BloodType> BloodTypes { get; set; }
         public DbSet<EmploymentStatus> EmploymentStatuses { get; set; }
+        public DbSet<DeviceType> DeviceTypes { get; set; }
 
     }
 }
