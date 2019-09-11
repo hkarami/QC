@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: LogBookDevices
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.logBookDevices.Include(l => l.Device).Include(l => l.User);
+            var laboratoryQCContext = _context.LogBookDevices.Include(l => l.Device).Include(l => l.User).Include(l => l.deviceStatus);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -33,7 +33,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var logBookDevice = await _context.logBookDevices
+            var logBookDevice = await _context.LogBookDevices
                 .Include(l => l.Device)
                 .Include(l => l.User)
                 .FirstOrDefaultAsync(m => m.IdLogBook == id);
@@ -49,8 +49,9 @@ namespace LaboratoryQualityControl.Controllers
         public IActionResult Create()
         {
             
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceType");
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName");
             ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName");
             return View();
         }
 
@@ -59,16 +60,18 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatus,Description,RecordTime")] LogBookDevice logBookDevice)
+        public async Task<IActionResult> Create([Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
         {
             if (ModelState.IsValid)
             {
+                logBookDevice.RecordTime = DateTime.Now;
                 _context.Add(logBookDevice);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", logBookDevice.DeviceCode);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", logBookDevice.UserCode);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
+            ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
             return View(logBookDevice);
         }
 
@@ -80,13 +83,14 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var logBookDevice = await _context.logBookDevices.FindAsync(id);
+            var logBookDevice = await _context.LogBookDevices.FindAsync(id);
             if (logBookDevice == null)
             {
                 return NotFound();
             }
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", logBookDevice.DeviceCode);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", logBookDevice.UserCode);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
+            ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
             return View(logBookDevice);
         }
 
@@ -95,7 +99,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatus,Description,RecordTime")] LogBookDevice logBookDevice)
+        public async Task<IActionResult> Edit(int id, [Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
         {
             if (id != logBookDevice.IdLogBook)
             {
@@ -122,8 +126,9 @@ namespace LaboratoryQualityControl.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", logBookDevice.DeviceCode);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", logBookDevice.UserCode);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
+            ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
             return View(logBookDevice);
         }
 
@@ -135,9 +140,10 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var logBookDevice = await _context.logBookDevices
+            var logBookDevice = await _context.LogBookDevices
                 .Include(l => l.Device)
                 .Include(l => l.User)
+                .Include(l=>l.deviceStatus)
                 .FirstOrDefaultAsync(m => m.IdLogBook == id);
             if (logBookDevice == null)
             {
@@ -152,15 +158,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var logBookDevice = await _context.logBookDevices.FindAsync(id);
-            _context.logBookDevices.Remove(logBookDevice);
+            var logBookDevice = await _context.LogBookDevices.FindAsync(id);
+            _context.LogBookDevices.Remove(logBookDevice);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LogBookDeviceExists(int id)
         {
-            return _context.logBookDevices.Any(e => e.IdLogBook == id);
+            return _context.LogBookDevices.Any(e => e.IdLogBook == id);
         }
     }
 }

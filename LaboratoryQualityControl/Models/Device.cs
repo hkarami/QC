@@ -104,7 +104,7 @@ namespace LaboratoryQualityControl.Models
         #endregion
 
         #region ForeignKey_by
-
+        public virtual ICollection<ServiceDevice> ServiceDevices { get; set; }
         public virtual ICollection<LogBookDevice> LogBookDevices { get; set; }
         public virtual ICollection<AutoclaveQualityControl> AutoclaveQualityControls { get; set; }
         public virtual ICollection<DeviceMaintenance> DeviceMaintenances { get; set; }

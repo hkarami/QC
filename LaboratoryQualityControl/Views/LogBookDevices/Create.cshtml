@@ -1,64 +1,28 @@
 ﻿@model LaboratoryQualityControl.Models.LogBookDevice
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "LogBook تجهیزات";
 }
 
-<h2>Create</h2>
+<h2>جدید</h2>
 
-<h4>LogBookDevice</h4>
+<h4> @ViewData["Title"]</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.Partial("_PartialCreateEdit",Model)
+            <hr />
             <div class="form-group">
-                <label asp-for="DeviceCode" class="control-label"></label>
-                <select asp-for="DeviceCode" class ="form-control" asp-items="ViewBag.DeviceCode"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCode" class="control-label"></label>
-                <select asp-for="UserCode" class ="form-control" asp-items="ViewBag.UserCode"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DoTime" class="control-label"></label>
-                <input asp-for="DoTime" class="form-control" />
-                <span asp-validation-for="DoTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StartTime" class="control-label"></label>
-                <input asp-for="StartTime" class="form-control" />
-                <span asp-validation-for="StartTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndTime" class="control-label"></label>
-                <input asp-for="EndTime" class="form-control" />
-                <span asp-validation-for="EndTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeviceStatus" class="control-label"></label>
-                <input asp-for="DeviceStatus" class="form-control" />
-                <span asp-validation-for="DeviceStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RecordTime" class="control-label"></label>
-                <input asp-for="RecordTime" class="form-control" />
-                <span asp-validation-for="RecordTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="ثبت" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">برگشت تو لیست</a>
 </div>
 
 @section Scripts {

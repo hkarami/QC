@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: LocationServices
         public async Task<IActionResult> Index()
         {
-            return View(await _context.locationServices.ToListAsync());
+            return View(await _context.LocationServices.ToListAsync());
         }
 
         // GET: LocationServices/Details/5
@@ -32,7 +32,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var locationService = await _context.locationServices
+            var locationService = await _context.LocationServices
                 .FirstOrDefaultAsync(m => m.LocationServiceID == id);
             if (locationService == null)
             {
@@ -72,7 +72,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var locationService = await _context.locationServices.FindAsync(id);
+            var locationService = await _context.LocationServices.FindAsync(id);
             if (locationService == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var locationService = await _context.locationServices
+            var locationService = await _context.LocationServices
                 .FirstOrDefaultAsync(m => m.LocationServiceID == id);
             if (locationService == null)
             {
@@ -138,15 +138,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var locationService = await _context.locationServices.FindAsync(id);
-            _context.locationServices.Remove(locationService);
+            var locationService = await _context.LocationServices.FindAsync(id);
+            _context.LocationServices.Remove(locationService);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LocationServiceExists(int id)
         {
-            return _context.locationServices.Any(e => e.LocationServiceID == id);
+            return _context.LocationServices.Any(e => e.LocationServiceID == id);
         }
     }
 }

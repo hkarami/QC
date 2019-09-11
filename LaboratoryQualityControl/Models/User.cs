@@ -110,7 +110,13 @@ namespace LaboratoryQualityControl.Models
         #endregion
         public virtual ICollection<Device> Devices { get; set; }
         public virtual ICollection<LogBookDevice> LogBookDevices { get; set; }
+        #region ServiceDevice
+        public virtual ICollection<ServiceDevice> ServiceDevices { get; set; }
+        public virtual ICollection<ServiceDevice> ConfirmUserServiceDevices { get; set; }
+        public virtual ICollection<ServiceDevice> UserDisinfectantServiceDevices { get; set; }
         
+        #endregion
+
         #region DeviceMaintenance
         public virtual ICollection<DeviceMaintenance> DeviceMaintenances { get; set; }
         public virtual ICollection<DeviceMaintenance> ConfirmUserDeviceMaintenances { get; set; }

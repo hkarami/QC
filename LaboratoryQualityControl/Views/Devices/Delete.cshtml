@@ -1,21 +1,21 @@
 ﻿@model LaboratoryQualityControl.Models.Device
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = " حذف تجهیزات";
 }
 
-<h2>Delete</h2>
+<h2>حذف</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>آیا مطمئن هستید که می خواهید این را حذف کنید؟</h3>
 <div>
-    <h4>Device</h4>
+    <h4>@Html.DisplayFor(model => model.DeviceName)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DeviceType)
+            @Html.DisplayNameFor(model => model.DeviceName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeviceType)
+            @Html.DisplayFor(model => model.DeviceName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Factory)
@@ -53,77 +53,11 @@
         <dd>
             @Html.DisplayFor(model => model.Location)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FeaturedUsers)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FeaturedUsers)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IdentificationCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IdentificationCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateSubmittedToLab)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateSubmittedToLab)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SectionLaunchDATE)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SectionLaunchDATE)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryStatus)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryStatus)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SpecialCharacteristic)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SpecialCharacteristic)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RelatedEquipment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RelatedEquipment)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneToSupportCompany)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneToSupportCompany)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LaboratorySections)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LaboratorySections.SectionCodeLab)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Other)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Other)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RecordTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RecordTime)
-        </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="DeviceCode" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="حذف" class="btn btn-default" /> |
+        <a asp-action="Index">برگشت  به لیست</a>
     </form>
 </div>

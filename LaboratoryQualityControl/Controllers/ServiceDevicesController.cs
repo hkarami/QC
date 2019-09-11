@@ -21,7 +21,12 @@ namespace LaboratoryQualityControl.Controllers
         // GET: ServiceDevices
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.serviceDevices.Include(s => s.LocationService).Include(s => s.User);
+            var laboratoryQCContext = _context.ServiceDevices.Include(s => s.LocationService)
+                                                             .Include(s => s.User)
+                                                             .Include(s => s.Device)
+                                                             .Include(s => s.ConfirmUser)
+                                                             .Include(s => s.UserDisinfectantDevice)
+                                                             .Include(s => s.SupportCompany);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -33,9 +38,13 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var serviceDevice = await _context.serviceDevices
+            var serviceDevice = await _context.ServiceDevices
                 .Include(s => s.LocationService)
                 .Include(s => s.User)
+                .Include(s => s.Device)
+                .Include(s => s.ConfirmUser)
+                .Include(s => s.UserDisinfectantDevice)
+                .Include(s => s.SupportCompany)
                 .FirstOrDefaultAsync(m => m.ServiceDeviceID == id);
             if (serviceDevice == null)
             {
@@ -48,8 +57,12 @@ namespace LaboratoryQualityControl.Controllers
         // GET: ServiceDevices/Create
         public IActionResult Create()
         {
-            ViewData["LocationServiceID"] = new SelectList(_context.locationServices, "LocationServiceID", "LocationServiceName");
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName");
+            ViewData["LocationServiceID"] = new SelectList(_context.LocationServices.Where(w=>w.Visible==true).OrderBy(o=>o.InOrder), "LocationServiceID", "LocationServiceName");
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["UserCodeDisinfectantDevice"]= new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName");
+            ViewData["SupportCompanyID"] = new SelectList(_context.SupportCompanies.Where(w => w.Visible == true).OrderBy(o => o.InOrder), "SupportCompanyID", "SupportCompanyName");
             return View();
         }
 
@@ -58,16 +71,22 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ServiceDeviceID,ExitTimeOfWork,UserCode,ContactTimeForSupportCompany,UserCodeDisinfectantDevice,ServiceTime,SupportCompanyName,ServiceMenName,LocationServiceID,DescriptionOfRepairCompleted,TimeReturnToWork,TechnicalApproval,Description,RecordTime")] ServiceDevice serviceDevice)
+        public async Task<IActionResult> Create([Bind("ServiceDeviceID,DeviceCode,ExitTimeOfWork,UserCode,ContactTimeForSupportCompany,UserCodeDisinfectantDevice,ServiceTime,SupportCompanyID,ServiceMenName,LocationServiceID,DescriptionOfRepairCompleted,TimeReturnToWork,UserCodeConfirm,Description,RecordTime")] ServiceDevice serviceDevice)
         {
             if (ModelState.IsValid)
             {
+                serviceDevice.UserCode = serviceDevice.UserCodeConfirm;
+                serviceDevice.RecordTime = DateTime.Now;
                 _context.Add(serviceDevice);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LocationServiceID"] = new SelectList(_context.locationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", serviceDevice.UserCode);
+            ViewData["LocationServiceID"] = new SelectList(_context.LocationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCode);
+            ViewData["UserCodeDisinfectantDevice"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeDisinfectantDevice);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeConfirm);
+            ViewData["SupportCompanyID"] = new SelectList(_context.SupportCompanies.Where(w => w.Visible == true).OrderBy(o => o.InOrder), "SupportCompanyID", "SupportCompanyName",serviceDevice.SupportCompanyID);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName",serviceDevice.DeviceCode);
             return View(serviceDevice);
         }
 
@@ -79,13 +98,17 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var serviceDevice = await _context.serviceDevices.FindAsync(id);
+            var serviceDevice = await _context.ServiceDevices.FindAsync(id);
             if (serviceDevice == null)
             {
                 return NotFound();
             }
-            ViewData["LocationServiceID"] = new SelectList(_context.locationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", serviceDevice.UserCode);
+            ViewData["LocationServiceID"] = new SelectList(_context.LocationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCode);
+            ViewData["UserCodeDisinfectantDevice"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeDisinfectantDevice);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeConfirm);
+            ViewData["SupportCompanyID"] = new SelectList(_context.SupportCompanies.Where(w => w.Visible == true).OrderBy(o => o.InOrder), "SupportCompanyID", "SupportCompanyName", serviceDevice.SupportCompanyID);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName",serviceDevice.DeviceCode);
             return View(serviceDevice);
         }
 
@@ -94,7 +117,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ServiceDeviceID,ExitTimeOfWork,UserCode,ContactTimeForSupportCompany,UserCodeDisinfectantDevice,ServiceTime,SupportCompanyName,ServiceMenName,LocationServiceID,DescriptionOfRepairCompleted,TimeReturnToWork,TechnicalApproval,Description,RecordTime")] ServiceDevice serviceDevice)
+        public async Task<IActionResult> Edit(int id, [Bind("ServiceDeviceID,DeviceCode,ExitTimeOfWork,UserCode,ContactTimeForSupportCompany,UserCodeDisinfectantDevice,ServiceTime,SupportCompanyID,ServiceMenName,LocationServiceID,DescriptionOfRepairCompleted,TimeReturnToWork,UserCodeConfirm,Description,RecordTime")] ServiceDevice serviceDevice)
         {
             if (id != serviceDevice.ServiceDeviceID)
             {
@@ -105,6 +128,7 @@ namespace LaboratoryQualityControl.Controllers
             {
                 try
                 {
+                    
                     _context.Update(serviceDevice);
                     await _context.SaveChangesAsync();
                 }
@@ -121,8 +145,12 @@ namespace LaboratoryQualityControl.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LocationServiceID"] = new SelectList(_context.locationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", serviceDevice.UserCode);
+            ViewData["LocationServiceID"] = new SelectList(_context.LocationServices, "LocationServiceID", "LocationServiceName", serviceDevice.LocationServiceID);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCode);
+            ViewData["UserCodeDisinfectantDevice"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeDisinfectantDevice);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", serviceDevice.UserCodeConfirm);
+            ViewData["SupportCompanyID"] = new SelectList(_context.SupportCompanies.Where(w => w.Visible == true).OrderBy(o => o.InOrder), "SupportCompanyID", "SupportCompanyName", serviceDevice.SupportCompanyID);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName",serviceDevice.DeviceCode);
             return View(serviceDevice);
         }
 
@@ -134,9 +162,13 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var serviceDevice = await _context.serviceDevices
+            var serviceDevice = await _context.ServiceDevices
                 .Include(s => s.LocationService)
                 .Include(s => s.User)
+                .Include(s => s.Device)
+                .Include(s => s.SupportCompany)
+                .Include(s => s.ConfirmUser)
+                .Include(s=>s.UserDisinfectantDevice)
                 .FirstOrDefaultAsync(m => m.ServiceDeviceID == id);
             if (serviceDevice == null)
             {
@@ -151,15 +183,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var serviceDevice = await _context.serviceDevices.FindAsync(id);
-            _context.serviceDevices.Remove(serviceDevice);
+            var serviceDevice = await _context.ServiceDevices.FindAsync(id);
+            _context.ServiceDevices.Remove(serviceDevice);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ServiceDeviceExists(int id)
         {
-            return _context.serviceDevices.Any(e => e.ServiceDeviceID == id);
+            return _context.ServiceDevices.Any(e => e.ServiceDeviceID == id);
         }
     }
 }

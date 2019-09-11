@@ -1,0 +1,68 @@
+﻿@model LaboratoryQualityControl.Models.ServiceDevice
+<div class="row">
+    <div class="col">
+        <label asp-for="DeviceCode" class="control-label"></label>
+        <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+    </div>
+    <div class="col">
+        <label asp-for="ExitTimeOfWork" class="control-label"></label>
+        <input asp-for="ExitTimeOfWork" class="form-control" />
+        <span asp-validation-for="ExitTimeOfWork" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="ContactTimeForSupportCompany" class="control-label"></label>
+        <input asp-for="ContactTimeForSupportCompany" class="form-control" />
+        <span asp-validation-for="ContactTimeForSupportCompany" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="UserCodeDisinfectantDevice" class="control-label"></label>
+        <select asp-for="UserCodeDisinfectantDevice" class="form-control" asp-items="ViewBag.UserCodeDisinfectantDevice"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label asp-for="ServiceTime" class="control-label"></label>
+        <input asp-for="ServiceTime" class="form-control" />
+        <span asp-validation-for="ServiceTime" class="text-danger"></span>
+    </div>
+    <div class="col">
+
+        <label asp-for="SupportCompanyID" class="control-label"></label>
+        <select asp-for="SupportCompanyID" class="form-control" asp-items="ViewBag.SupportCompanyID"></select>
+    </div>
+    <div class="col">
+        <label asp-for="ServiceMenName" class="control-label"></label>
+        <input asp-for="ServiceMenName" class="form-control" />
+        <span asp-validation-for="ServiceMenName" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="LocationServiceID" class="control-label"></label>
+        <select asp-for="LocationServiceID" class="form-control" asp-items="ViewBag.LocationServiceID"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label asp-for="DescriptionOfRepairCompleted" class="control-label"></label>
+        <input asp-for="DescriptionOfRepairCompleted" class="form-control" />
+        <span asp-validation-for="DescriptionOfRepairCompleted" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="TimeReturnToWork" class="control-label"></label>
+        <input asp-for="TimeReturnToWork" class="form-control" />
+        <span asp-validation-for="TimeReturnToWork" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <div class="col">
+            <label asp-for="UserCodeConfirm" class="control-label"></label>
+            <select asp-for="UserCodeConfirm" class="form-control" asp-items="ViewBag.UserCodeConfirm"></select>
+        </div>
+    </div>
+    <div class="col">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+</div>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

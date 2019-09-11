@@ -1,92 +1,31 @@
 ﻿@model LaboratoryQualityControl.Models.ServiceDevice
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "ویرایش سرویس تجهیزات";
 }
 
-<h2>Edit</h2>
+<h2>@ViewData["Title"]</h2>
 
 <h4>ServiceDevice</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ServiceDeviceID" />
+            <input type="hidden" asp-for="RecordTime" />
+            <input type="hidden" asp-for="UserCode" />
+            @Html.Partial("_PartialCreateEdit", Model)
+            <hr />
             <div class="form-group">
-                <label asp-for="ExitTimeOfWork" class="control-label"></label>
-                <input asp-for="ExitTimeOfWork" class="form-control" />
-                <span asp-validation-for="ExitTimeOfWork" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCode" class="control-label"></label>
-                <select asp-for="UserCode" class="form-control" asp-items="ViewBag.UserCode"></select>
-                <span asp-validation-for="UserCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactTimeForSupportCompany" class="control-label"></label>
-                <input asp-for="ContactTimeForSupportCompany" class="form-control" />
-                <span asp-validation-for="ContactTimeForSupportCompany" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCodeDisinfectantDevice" class="control-label"></label>
-                <input asp-for="UserCodeDisinfectantDevice" class="form-control" />
-                <span asp-validation-for="UserCodeDisinfectantDevice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ServiceTime" class="control-label"></label>
-                <input asp-for="ServiceTime" class="form-control" />
-                <span asp-validation-for="ServiceTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SupportCompanyName" class="control-label"></label>
-                <input asp-for="SupportCompanyName" class="form-control" />
-                <span asp-validation-for="SupportCompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ServiceMenName" class="control-label"></label>
-                <input asp-for="ServiceMenName" class="form-control" />
-                <span asp-validation-for="ServiceMenName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocationServiceID" class="control-label"></label>
-                <select asp-for="LocationServiceID" class="form-control" asp-items="ViewBag.LocationServiceID"></select>
-                <span asp-validation-for="LocationServiceID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DescriptionOfRepairCompleted" class="control-label"></label>
-                <input asp-for="DescriptionOfRepairCompleted" class="form-control" />
-                <span asp-validation-for="DescriptionOfRepairCompleted" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TimeReturnToWork" class="control-label"></label>
-                <input asp-for="TimeReturnToWork" class="form-control" />
-                <span asp-validation-for="TimeReturnToWork" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TechnicalApproval" class="control-label"></label>
-                <input asp-for="TechnicalApproval" class="form-control" />
-                <span asp-validation-for="TechnicalApproval" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RecordTime" class="control-label"></label>
-                <input asp-for="RecordTime" class="form-control" />
-                <span asp-validation-for="RecordTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="ثبت" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">برگشت تو لیست</a>
 </div>
 
 @section Scripts {

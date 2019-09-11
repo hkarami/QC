@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: IncubatorMaintenances
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.incubatorMaintenances.Include(i => i.Device).Include(i => i.User).Include(i => i.UserConfirm).Include(i => i.UserFunctor);
+            var laboratoryQCContext = _context.IncubatorMaintenances.Include(i => i.Device).Include(i => i.User).Include(i => i.UserConfirm).Include(i => i.UserFunctor);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -33,7 +33,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var incubatorMaintenance = await _context.incubatorMaintenances
+            var incubatorMaintenance = await _context.IncubatorMaintenances
                 .Include(i => i.Device)
                 .Include(i => i.User)
                 .Include(i => i.UserConfirm)
@@ -85,7 +85,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var incubatorMaintenance = await _context.incubatorMaintenances.FindAsync(id);
+            var incubatorMaintenance = await _context.IncubatorMaintenances.FindAsync(id);
             if (incubatorMaintenance == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var incubatorMaintenance = await _context.incubatorMaintenances
+            var incubatorMaintenance = await _context.IncubatorMaintenances
                 .Include(i => i.Device)
                 .Include(i => i.User)
                 .Include(i => i.UserConfirm)
@@ -163,15 +163,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var incubatorMaintenance = await _context.incubatorMaintenances.FindAsync(id);
-            _context.incubatorMaintenances.Remove(incubatorMaintenance);
+            var incubatorMaintenance = await _context.IncubatorMaintenances.FindAsync(id);
+            _context.IncubatorMaintenances.Remove(incubatorMaintenance);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool IncubatorMaintenanceExists(int id)
         {
-            return _context.incubatorMaintenances.Any(e => e.IncubatorMaintenanceID == id);
+            return _context.IncubatorMaintenances.Any(e => e.IncubatorMaintenanceID == id);
         }
     }
 }

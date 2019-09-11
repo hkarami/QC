@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: DeviceMaintenances
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.deviceMaintenances.Include(d => d.ConfirmUser).Include(d => d.Device).Include(d => d.FunctorUser).Include(d => d.User);
+            var laboratoryQCContext = _context.DeviceMaintenances.Include(d => d.ConfirmUser).Include(d => d.Device).Include(d => d.FunctorUser).Include(d => d.User);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -33,7 +33,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var deviceMaintenance = await _context.deviceMaintenances
+            var deviceMaintenance = await _context.DeviceMaintenances
                 .Include(d => d.ConfirmUser)
                 .Include(d => d.Device)
                 .Include(d => d.FunctorUser)
@@ -85,7 +85,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var deviceMaintenance = await _context.deviceMaintenances.FindAsync(id);
+            var deviceMaintenance = await _context.DeviceMaintenances.FindAsync(id);
             if (deviceMaintenance == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var deviceMaintenance = await _context.deviceMaintenances
+            var deviceMaintenance = await _context.DeviceMaintenances
                 .Include(d => d.ConfirmUser)
                 .Include(d => d.Device)
                 .Include(d => d.FunctorUser)
@@ -163,15 +163,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var deviceMaintenance = await _context.deviceMaintenances.FindAsync(id);
-            _context.deviceMaintenances.Remove(deviceMaintenance);
+            var deviceMaintenance = await _context.DeviceMaintenances.FindAsync(id);
+            _context.DeviceMaintenances.Remove(deviceMaintenance);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DeviceMaintenanceExists(int id)
         {
-            return _context.deviceMaintenances.Any(e => e.DeviceMaintenanceID == id);
+            return _context.DeviceMaintenances.Any(e => e.DeviceMaintenanceID == id);
         }
     }
 }

@@ -1,22 +1,28 @@
 ﻿@model IEnumerable<LaboratoryQualityControl.Models.ServiceDevice>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "سرویس تجهیزات";
 }
 
-<h2>Index</h2>
+    <h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">جدید</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ExitTimeOfWork)
+                @Html.DisplayNameFor(model => model.Device.DeviceName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactTimeForSupportCompany)
+                @Html.DisplayNameFor(model => model.Device.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.IdentificationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.Location)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserCodeDisinfectantDevice)
@@ -25,31 +31,16 @@
                 @Html.DisplayNameFor(model => model.ServiceTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SupportCompanyName)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ServiceMenName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DescriptionOfRepairCompleted)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeReturnToWork)
+                @Html.DisplayNameFor(model => model.UserCodeConfirm)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TechnicalApproval)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationService)
+                @Html.DisplayNameFor(model => model.LocationService.LocationServiceName)
             </th>
             <th></th>
         </tr>
@@ -58,19 +49,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ExitTimeOfWork)
+                @Html.DisplayFor(modelItem => item.Device.DeviceName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ContactTimeForSupportCompany)
+                @Html.DisplayFor(modelItem => item.Device.SerialNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserCodeDisinfectantDevice)
+                @Html.DisplayFor(modelItem => item.Device.IdentificationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDisinfectantDevice.NickName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ServiceTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupportCompanyName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ServiceMenName)
@@ -79,27 +73,15 @@
                 @Html.DisplayFor(modelItem => item.DescriptionOfRepairCompleted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeReturnToWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TechnicalApproval)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FName)
+                @Html.DisplayFor(modelItem => item.ConfirmUser.NickName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LocationService.LocationServiceName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ServiceDeviceID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ServiceDeviceID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ServiceDeviceID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ServiceDeviceID">ویرایش</a> |
+                @*<a asp-action="Details" asp-route-id="@item.ServiceDeviceID">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.ServiceDeviceID">حذف</a>
             </td>
         </tr>
 }

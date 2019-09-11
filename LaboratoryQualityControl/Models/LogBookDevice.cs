@@ -16,7 +16,7 @@ namespace LaboratoryQualityControl.Models
         public int IdLogBook { get; set; } 
         [DisplayName("کد دستگاه")]
         public int DeviceCode { get; set; }
-        [DisplayName("کد کاربر")]
+        [DisplayName(" کاربر")]
         public int UserCode { get; set; }
         [DisplayName("تاریخ")]
         public DateTime DoTime { get; set; }
@@ -25,8 +25,7 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("زمان خاتمه استفاده")]
         public DateTime EndTime { get; set; }
         [DisplayName("وضعیت دستگاه در زمان استفاده")]
-        [StringLength(100)]
-        public String DeviceStatus { get; set; }
+        public int DeviceStatusID { get; set; }
         [StringLength(200)]
         [DisplayName("توضیحات")]
         public String Description { get; set; }
@@ -34,5 +33,6 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         public virtual User User { get; set; }
         public virtual Device Device { get; set; }
+        public virtual DeviceStatus deviceStatus { get; set; }
     }
 }

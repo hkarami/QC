@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: AutoclaveQualityControls
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.autoclaveQualityControls.Include(a => a.Device).Include(a => a.User).Include(a => a.UserFunctor);
+            var laboratoryQCContext = _context.AutoclaveQualityControls.Include(a => a.Device).Include(a => a.User).Include(a => a.UserFunctor);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -33,7 +33,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var autoclaveQualityControl = await _context.autoclaveQualityControls
+            var autoclaveQualityControl = await _context.AutoclaveQualityControls
                 .Include(a => a.Device)
                 .Include(a => a.User)
                 .Include(a => a.UserFunctor)
@@ -82,7 +82,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var autoclaveQualityControl = await _context.autoclaveQualityControls.FindAsync(id);
+            var autoclaveQualityControl = await _context.AutoclaveQualityControls.FindAsync(id);
             if (autoclaveQualityControl == null)
             {
                 return NotFound();
@@ -139,7 +139,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
 
-            var autoclaveQualityControl = await _context.autoclaveQualityControls
+            var autoclaveQualityControl = await _context.AutoclaveQualityControls
                 .Include(a => a.Device)
                 .Include(a => a.User)
                 .Include(a => a.UserFunctor)
@@ -157,15 +157,15 @@ namespace LaboratoryQualityControl.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var autoclaveQualityControl = await _context.autoclaveQualityControls.FindAsync(id);
-            _context.autoclaveQualityControls.Remove(autoclaveQualityControl);
+            var autoclaveQualityControl = await _context.AutoclaveQualityControls.FindAsync(id);
+            _context.AutoclaveQualityControls.Remove(autoclaveQualityControl);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AutoclaveQualityControlExists(int id)
         {
-            return _context.autoclaveQualityControls.Any(e => e.AutoclaveQualityControlID == id);
+            return _context.AutoclaveQualityControls.Any(e => e.AutoclaveQualityControlID == id);
         }
     }
 }

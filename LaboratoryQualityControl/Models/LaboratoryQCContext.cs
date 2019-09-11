@@ -18,12 +18,12 @@ namespace LaboratoryQualityControl.Models
         public DbSet<LaboratorySections> LaboratorySections { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<LogBookDevice> logBookDevices { get; set; }
-        public DbSet<LocationService> locationServices { get; set; }
-        public DbSet<ServiceDevice> serviceDevices { get; set; }
-        public DbSet<DeviceMaintenance> deviceMaintenances { get; set; }
-        public DbSet<AutoclaveQualityControl> autoclaveQualityControls { get; set; }
-        public DbSet<IncubatorMaintenance> incubatorMaintenances { get; set; }
+        public DbSet<LogBookDevice> LogBookDevices { get; set; }
+        public DbSet<LocationService> LocationServices { get; set; }
+        public DbSet<ServiceDevice> ServiceDevices { get; set; }
+        public DbSet<DeviceMaintenance> DeviceMaintenances { get; set; }
+        public DbSet<AutoclaveQualityControl> AutoclaveQualityControls { get; set; }
+        public DbSet<IncubatorMaintenance> IncubatorMaintenances { get; set; }
         public DbSet<LaboratoryQualityControl.Models.WaterBathMaintenance> WaterBathMaintenance { get; set; }
         public DbSet<SpectrophotometerMaintenance> SpectrophotometerMaintenances { get; set; }
         public DbSet<PhotometerMaintenance> PhotometerMaintenances { get; set; }
@@ -32,6 +32,8 @@ namespace LaboratoryQualityControl.Models
         public DbSet<BloodType> BloodTypes { get; set; }
         public DbSet<EmploymentStatus> EmploymentStatuses { get; set; }
         public DbSet<DeviceType> DeviceTypes { get; set; }
+        public DbSet<DeviceStatus> DeviceStatuses { get; set; }
+        public DbSet<SupportCompany> SupportCompanies { get; set; }
 
     }
 }

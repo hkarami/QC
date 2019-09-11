@@ -1,99 +1,35 @@
 ﻿@model LaboratoryQualityControl.Models.ServiceDevice
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "حذف سرویس تجهیزات";
 }
 
-<h2>Delete</h2>
+    <h2>@ViewData["Title"] </h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>آیا مطمئن هستید که می خواهید این را حذف کنید؟</h3>
 <div>
-    <h4>ServiceDevice</h4>
+    <h4> @Html.DisplayFor(model => model.Device.DeviceName)</h4>
     <hr />
-    <dl class="dl-horizontal">
+    @*<dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ExitTimeOfWork)
+            @Html.DisplayNameFor(model => model.Device.DeviceName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ExitTimeOfWork)
-        </dd>
-        <dt>
+            @Html.DisplayFor(model => model.Device.DeviceName)
+        </dd>*@
+        @*<dt>
             @Html.DisplayNameFor(model => model.ContactTimeForSupportCompany)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ContactTimeForSupportCompany)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UserCodeDisinfectantDevice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserCodeDisinfectantDevice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ServiceTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ServiceTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SupportCompanyName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SupportCompanyName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ServiceMenName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ServiceMenName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DescriptionOfRepairCompleted)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DescriptionOfRepairCompleted)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeReturnToWork)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TimeReturnToWork)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TechnicalApproval)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TechnicalApproval)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RecordTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RecordTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.FName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LocationService)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LocationService.LocationServiceName)
-        </dd>
-    </dl>
+        </dd>*@
+ 
+  
+    @*</dl>*@
     
-    <form asp-action="Delete">
+    <form asp-action="حذف">
         <input type="hidden" asp-for="ServiceDeviceID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">برگشت تو لیست</a>
     </form>
 </div>

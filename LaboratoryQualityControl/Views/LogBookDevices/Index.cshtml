@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<LaboratoryQualityControl.Models.LogBookDevice>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "LogBook تجهیزات";
 }
 
-<h2>Index</h2>
+    <h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">جدید</a>
 </p>
 <table class="table">
     <thead>
@@ -16,8 +16,18 @@
                 @Html.DisplayNameFor(model => model.Device.DeviceName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Device.IdentificationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.Location)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DoTime)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserCode)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.StartTime)
             </th>
@@ -25,17 +35,15 @@
                 @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeviceStatus)
+                @Html.DisplayNameFor(model => model.DeviceStatusID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.NickName)
-            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.RecordTime)
+        </th>*@
+
 
             <th></th>
         </tr>
@@ -47,8 +55,18 @@
                 @Html.DisplayFor(modelItem => item.Device.DeviceName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Device.IdentificationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.Location)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DoTime)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.NickName)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.StartTime)
             </td>
@@ -56,17 +74,15 @@
                 @Html.DisplayFor(modelItem => item.EndTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeviceStatus)
+                @Html.DisplayFor(modelItem => item.deviceStatus.DeviceStatusName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.NickName)
-            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.RecordTime)
+        </td>*@
+
 
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdLogBook">ویرایش</a> |

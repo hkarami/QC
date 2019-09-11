@@ -35,10 +35,10 @@
             @Html.DisplayFor(model => model.ServiceTime)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.SupportCompanyName)
+            @Html.DisplayNameFor(model => model.SupportCompany.SupportCompanyName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.SupportCompanyName)
+            @Html.DisplayFor(model => model.SupportCompany.SupportCompanyName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ServiceMenName)
@@ -59,10 +59,10 @@
             @Html.DisplayFor(model => model.TimeReturnToWork)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TechnicalApproval)
+            @Html.DisplayNameFor(model => model.ConfirmUser)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TechnicalApproval)
+            @Html.DisplayFor(model => model.ConfirmUser)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -80,7 +80,7 @@
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.User.FName)
+            @Html.DisplayFor(model => model.User.NickName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.LocationService)

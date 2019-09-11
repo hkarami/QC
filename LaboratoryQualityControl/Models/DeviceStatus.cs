@@ -8,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace LaboratoryQualityControl.Models
 {
-    [Table("DeviceType")]
-    public class DeviceType
+    [Table("DeviceStatus")]
+    public class DeviceStatus
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("کد")]
-        public int DeviceTypeID { get; set; }
-        [DisplayName("نوع تجهیزات")]
+        public int DeviceStatusID { get; set; }
         [StringLength(50)]
+        [DisplayName("وضعیت")]
         [Required(ErrorMessage = "{0} نمی توان خالی باشد")]
-        public string DeviceTypeName { get; set; }
+        public string DeviceStatusName { get; set; }
         [DisplayName("مرتب")]
         public int InOrder { get; set; }
         [DisplayName("زمان ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual ICollection<Device> Devices { get; set; }
+        public virtual ICollection<LogBookDevice> logBookDevices { get; set; }
 
-        
     }
 }
