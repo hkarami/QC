@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<LaboratoryQualityControl.Models.User>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "اطلاعات پرسنل";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">تعریف پرسنل جدید</a>
 </p>
 <table class="table">
     <thead>
@@ -16,91 +16,31 @@
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PassWord)
+                @Html.DisplayNameFor(model => model.FName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FName)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.NickName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ExpireTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EnterNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Issued)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FatherName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UniversityName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearGet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Telephone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelephoneNecessary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DrugSensitivity)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BeginTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HistoryVaccination)
+                @Html.DisplayNameFor(model => model.Role.RoleName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HistoryOfOccupationalInjury)
+                @Html.DisplayNameFor(model => model.LaboratorySections.SectionNameLab)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RecordTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaritalStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EducationalCertificate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BloodType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LaboratorySections)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmploymentStatus)
+                @Html.DisplayNameFor(model => model.EmploymentStatus.EmploymentStatusName)
             </th>
             <th></th>
         </tr>
@@ -112,96 +52,36 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PassWord)
+                @Html.DisplayFor(modelItem => item.FName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NickName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ExpireTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Picture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnterNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Issued)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FatherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UniversityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearGet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
+            </td>        
             <td>
                 @Html.DisplayFor(modelItem => item.Telephone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelephoneNecessary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DrugSensitivity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BeginTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HistoryVaccination)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HistoryOfOccupationalInjury)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordTime)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Role.RoleName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaritalStatus.MaritalStatusName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EducationalCertificate.EducationalCertificateName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BloodType.BloodTypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LaboratorySections.SectionCodeLab)
+                @Html.DisplayFor(modelItem => item.LaboratorySections.SectionNameLab)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EmploymentStatus.EmploymentStatusName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UserCode">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserCode">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserCode">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.UserCode">ویرایش</a> |
+                @*<a asp-action="Details" asp-route-id="@item.UserCode">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.UserCode">حذف</a>
             </td>
         </tr>
 }

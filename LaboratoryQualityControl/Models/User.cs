@@ -80,7 +80,7 @@ namespace LaboratoryQualityControl.Models
         [Required(ErrorMessage = "{0} نمی توان خالی باشد")]
         [StringLength(11, ErrorMessage = "{0} باید {1} رقم باشد", MinimumLength = 10)]
         public string Telephone { get; set; }
-        [DisplayName("شماره تماس در موارد اضطراری")]
+        [DisplayName("شماره تماس  اضطراری")]
         [Required(ErrorMessage = "{0} نمی توان خالی باشد")]
         [StringLength(11, ErrorMessage = "{0} باید {1} رقم باشد", MinimumLength = 10)]
         public String TelephoneNecessary { get; set; }
@@ -88,9 +88,9 @@ namespace LaboratoryQualityControl.Models
         public int BloodTypeID { get; set; }
         [DisplayName("حساسیت دارویی")]
         public bool DrugSensitivity { get; set; }
-        [DisplayName("تاریخ شروع به کار در آزمایشگاه")]
+        [DisplayName("تاریخ شروع به کار ")]
         public DateTime BeginTime { get; set; }
-        [DisplayName("واحد(بخش) محل خدمت")]
+        [DisplayName("واحد محل خدمت")]
         public int SectionCodeLab { get; set; }
         [DisplayName("وضعیت استخدام")]
         public int EmploymentStatusID { get; set; }
@@ -98,8 +98,19 @@ namespace LaboratoryQualityControl.Models
         public bool HistoryVaccination {get;set;}
         [DisplayName("سابقه آسیب شغلی")]
         public bool HistoryOfOccupationalInjury { get; set; }
+        [DisplayName("توضیحات")]
+
+        public string Description { get; set; }
+        [DisplayName("جانشین")]
+        public int? UserCodeSuccessor { get; set; }
+        [DisplayName("کاربر ثبت کننده")]
+        public int UserCodeSave { get; set; }
+        [DisplayName("تاریخ آخرین تغییر")]
+        public DateTime UpdateRecordTime { get; set; }
         [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
+        //public User UserCodeSuccessors { get; set; }
+        //public User UserCodeSaves { get; set; }
         #region ForeignKey
         public virtual Role Role { get; set; }
         public virtual MaritalStatus MaritalStatus { get; set; }

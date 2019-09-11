@@ -1,178 +1,28 @@
 ﻿@model LaboratoryQualityControl.Models.User
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "تعریف پرسنل جدید";
 }
 
-<h2>Create</h2>
+    <h2>@ViewData["Title"] </h2>
 
-<h4>User</h4>
+@*<h4>User</h4>*@
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @Html.Partial("_PartialCreateEdit",Model)
+            <hr />
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PassWord" class="control-label"></label>
-                <input asp-for="PassWord" class="form-control" />
-                <span asp-validation-for="PassWord" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoleCode" class="control-label"></label>
-                <select asp-for="RoleCode" class ="form-control" asp-items="ViewBag.RoleCode"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="LName" class="control-label"></label>
-                <input asp-for="LName" class="form-control" />
-                <span asp-validation-for="LName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FName" class="control-label"></label>
-                <input asp-for="FName" class="form-control" />
-                <span asp-validation-for="FName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NickName" class="control-label"></label>
-                <input asp-for="NickName" class="form-control" />
-                <span asp-validation-for="NickName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Sex" /> @Html.DisplayNameFor(model => model.Sex)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpireTime" class="control-label"></label>
-                <input asp-for="ExpireTime" class="form-control" />
-                <span asp-validation-for="ExpireTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Picture" class="control-label"></label>
-                <input asp-for="Picture" class="form-control" />
-                <span asp-validation-for="Picture" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EnterNum" class="control-label"></label>
-                <input asp-for="EnterNum" class="form-control" />
-                <span asp-validation-for="EnterNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaritalStatusID" class="control-label"></label>
-                <select asp-for="MaritalStatusID" class ="form-control" asp-items="ViewBag.MaritalStatusID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumberID" class="control-label"></label>
-                <input asp-for="NumberID" class="form-control" />
-                <span asp-validation-for="NumberID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Issued" class="control-label"></label>
-                <input asp-for="Issued" class="form-control" />
-                <span asp-validation-for="Issued" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FatherName" class="control-label"></label>
-                <input asp-for="FatherName" class="form-control" />
-                <span asp-validation-for="FatherName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EducationalCertificateID" class="control-label"></label>
-                <select asp-for="EducationalCertificateID" class ="form-control" asp-items="ViewBag.EducationalCertificateID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UniversityName" class="control-label"></label>
-                <input asp-for="UniversityName" class="form-control" />
-                <span asp-validation-for="UniversityName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="YearGet" class="control-label"></label>
-                <input asp-for="YearGet" class="form-control" />
-                <span asp-validation-for="YearGet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telephone" class="control-label"></label>
-                <input asp-for="Telephone" class="form-control" />
-                <span asp-validation-for="Telephone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TelephoneNecessary" class="control-label"></label>
-                <input asp-for="TelephoneNecessary" class="form-control" />
-                <span asp-validation-for="TelephoneNecessary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BloodTypeID" class="control-label"></label>
-                <select asp-for="BloodTypeID" class ="form-control" asp-items="ViewBag.BloodTypeID"></select>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="DrugSensitivity" /> @Html.DisplayNameFor(model => model.DrugSensitivity)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="BeginTime" class="control-label"></label>
-                <input asp-for="BeginTime" class="form-control" />
-                <span asp-validation-for="BeginTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SectionCodeLab" class="control-label"></label>
-                <select asp-for="SectionCodeLab" class ="form-control" asp-items="ViewBag.SectionCodeLab"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmploymentStatusID" class="control-label"></label>
-                <select asp-for="EmploymentStatusID" class ="form-control" asp-items="ViewBag.EmploymentStatusID"></select>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="HistoryVaccination" /> @Html.DisplayNameFor(model => model.HistoryVaccination)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="HistoryOfOccupationalInjury" /> @Html.DisplayNameFor(model => model.HistoryOfOccupationalInjury)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="RecordTime" class="control-label"></label>
-                <input asp-for="RecordTime" class="form-control" />
-                <span asp-validation-for="RecordTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="ثبت" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">برگشت به لیست</a>
 </div>
 
 @section Scripts {
