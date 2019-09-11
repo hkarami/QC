@@ -50,10 +50,10 @@ namespace LaboratoryQualityControl.Controllers
         // GET: DeviceMaintenances/Create
         public IActionResult Create()
         {
-            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "FName");
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode");
-            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "FName");
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName");
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName");
+            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "NickName");
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName");
             return View();
         }
 
@@ -66,14 +66,17 @@ namespace LaboratoryQualityControl.Controllers
         {
             if (ModelState.IsValid)
             {
+                deviceMaintenance.UserCode = deviceMaintenance.UserCodeConfirm;
+                deviceMaintenance.RecordTime = DateTime.Now;
+                deviceMaintenance.UpdateRecordTime = DateTime.Now;
                 _context.Add(deviceMaintenance);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeConfirm);
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", deviceMaintenance.DeviceCode);
-            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeFunctor);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCode);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeConfirm);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", deviceMaintenance.DeviceCode);
+            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeFunctor);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCode);
             return View(deviceMaintenance);
         }
 
@@ -90,10 +93,10 @@ namespace LaboratoryQualityControl.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeConfirm);
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", deviceMaintenance.DeviceCode);
-            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeFunctor);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCode);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeConfirm);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", deviceMaintenance.DeviceCode);
+            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeFunctor);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCode);
             return View(deviceMaintenance);
         }
 
@@ -113,6 +116,7 @@ namespace LaboratoryQualityControl.Controllers
             {
                 try
                 {
+                    deviceMaintenance.UpdateRecordTime = DateTime.Now;
                     _context.Update(deviceMaintenance);
                     await _context.SaveChangesAsync();
                 }
@@ -129,10 +133,10 @@ namespace LaboratoryQualityControl.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeConfirm);
-            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceCode", deviceMaintenance.DeviceCode);
-            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCodeFunctor);
-            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "FName", deviceMaintenance.UserCode);
+            ViewData["UserCodeConfirm"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeConfirm);
+            ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", deviceMaintenance.DeviceCode);
+            ViewData["UserCodeFunctor"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCodeFunctor);
+            ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", deviceMaintenance.UserCode);
             return View(deviceMaintenance);
         }
 

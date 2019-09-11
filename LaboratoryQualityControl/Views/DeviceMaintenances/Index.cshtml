@@ -1,17 +1,26 @@
 ﻿@model IEnumerable<LaboratoryQualityControl.Models.DeviceMaintenance>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "نگهداری تجهیزات";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">جدید</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.DeviceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.IdentificationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device.Location)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ControlledFactor)
             </th>
@@ -25,22 +34,10 @@
                 @Html.DisplayNameFor(model => model.RemediesAndCorrectiveAction)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UpdateRecordTime)
+                @Html.DisplayNameFor(model => model.UserCodeFunctor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RecordTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConfirmUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FunctorUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Device)
+                @Html.DisplayNameFor(model => model.UserCodeConfirm)
             </th>
             <th></th>
         </tr>
@@ -49,39 +46,36 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceName)
+            </td>
+            <td>                              
+                @Html.DisplayFor(modelItem => item.Device.IdentificationCode)
+            </td>                             
+            <td>                              
+                @Html.DisplayFor(modelItem => item.Device.Location)
+            </td>                             
+            <td>                              
                 @Html.DisplayFor(modelItem => item.ControlledFactor)
-            </td>
-            <td>
+            </td>                             
+            <td>                              
                 @Html.DisplayFor(modelItem => item.DoTime)
-            </td>
+            </td>   
             <td>
                 @Html.DisplayFor(modelItem => item.Result)
+            </td>                             
+            <td>
+                @Html.DisplayFor(model => item.RemediesAndCorrectiveAction)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RemediesAndCorrectiveAction)
+                @Html.DisplayFor(modelItem => item.FunctorUser.NickName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdateRecordTime)
+                @Html.DisplayFor(modelItem => item.ConfirmUser.NickName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecordTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmUser.FName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FunctorUser.FName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.DeviceCode)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DeviceMaintenanceID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DeviceMaintenanceID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DeviceMaintenanceID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.DeviceMaintenanceID">ویرایش</a> |
+                @*<a asp-action="Details" asp-route-id="@item.DeviceMaintenanceID">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.DeviceMaintenanceID">حذف</a>
             </td>
         </tr>
 }

@@ -1,0 +1,41 @@
+﻿@model LaboratoryQualityControl.Models.DeviceMaintenance
+<div class="row">
+    <div class="col">
+        <label asp-for="DeviceCode" class="control-label"></label>
+        <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+    </div>
+    <div class="col">
+        <label asp-for="ControlledFactor" class="control-label"></label>
+        <input asp-for="ControlledFactor" class="form-control" />
+        <span asp-validation-for="ControlledFactor" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="DoTime" class="control-label"></label>
+        <input asp-for="DoTime" class="form-control" />
+        <span asp-validation-for="DoTime" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <label asp-for="Result" class="control-label"></label>
+        <input asp-for="Result" class="form-control" />
+        <span asp-validation-for="Result" class="text-danger"></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <label asp-for="UserCodeFunctor" class="control-label"></label>
+        <select asp-for="UserCodeFunctor" class="form-control" asp-items="ViewBag.UserCodeFunctor"></select>
+    </div>
+    <div class="col-3">
+        <label asp-for="UserCodeConfirm" class="control-label"></label>
+        <select asp-for="UserCodeConfirm" class="form-control" asp-items="ViewBag.UserCodeConfirm"></select>
+    </div>
+    <div class="col-6">
+        <label asp-for="RemediesAndCorrectiveAction" class="control-label"></label>
+        <input asp-for="RemediesAndCorrectiveAction" class="form-control" />
+        <span asp-validation-for="RemediesAndCorrectiveAction" class="text-danger"></span>
+    </div>
+</div>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

@@ -15,6 +15,7 @@ namespace LaboratoryQualityControl.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("کد")]
         public int DeviceMaintenanceID { get; set; }
+        [DisplayName("دستگاه")]
         public int DeviceCode { get; set; }
         [DisplayName("فاکتور(عامل) مورد کنترل")]
         //[StringLength(100)]
@@ -24,9 +25,9 @@ namespace LaboratoryQualityControl.Models
         public DateTime DoTime { get; set; }
         [DisplayName("نتیجه")]
         public String Result { get; set; }
-        [DisplayName("کد کاربر انجام دهنده")]
+        [DisplayName(" کاربر انجام دهنده")]
         public int UserCodeFunctor { get; set; }
-        [DisplayName("کد کاربر تایید کننده")]
+        [DisplayName(" کاربر تایید کننده")]
         public int UserCodeConfirm { get; set; }
         [DisplayName("ملاحظات و اقدام اصلاحی")]
         [Required(ErrorMessage = "{0} نمی توان خالی باشد"), StringLength(200)]

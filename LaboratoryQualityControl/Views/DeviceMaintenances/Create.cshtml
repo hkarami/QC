@@ -1,72 +1,28 @@
 ﻿@model LaboratoryQualityControl.Models.DeviceMaintenance
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "نگهداری تجهیزات جدید";
 }
 
-<h2>Create</h2>
+<h2>@ViewData["Title"]</h2>
 
-<h4>DeviceMaintenance</h4>
+@*<h4>DeviceMaintenance</h4>*@
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.Partial("_PartialCreateEdit",Model)
+            <hr />
             <div class="form-group">
-                <label asp-for="DeviceCode" class="control-label"></label>
-                <select asp-for="DeviceCode" class ="form-control" asp-items="ViewBag.DeviceCode"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ControlledFactor" class="control-label"></label>
-                <input asp-for="ControlledFactor" class="form-control" />
-                <span asp-validation-for="ControlledFactor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DoTime" class="control-label"></label>
-                <input asp-for="DoTime" class="form-control" />
-                <span asp-validation-for="DoTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Result" class="control-label"></label>
-                <input asp-for="Result" class="form-control" />
-                <span asp-validation-for="Result" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCodeFunctor" class="control-label"></label>
-                <select asp-for="UserCodeFunctor" class ="form-control" asp-items="ViewBag.UserCodeFunctor"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCodeConfirm" class="control-label"></label>
-                <select asp-for="UserCodeConfirm" class ="form-control" asp-items="ViewBag.UserCodeConfirm"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="RemediesAndCorrectiveAction" class="control-label"></label>
-                <input asp-for="RemediesAndCorrectiveAction" class="form-control" />
-                <span asp-validation-for="RemediesAndCorrectiveAction" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserCode" class="control-label"></label>
-                <select asp-for="UserCode" class ="form-control" asp-items="ViewBag.UserCode"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateRecordTime" class="control-label"></label>
-                <input asp-for="UpdateRecordTime" class="form-control" />
-                <span asp-validation-for="UpdateRecordTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RecordTime" class="control-label"></label>
-                <input asp-for="RecordTime" class="form-control" />
-                <span asp-validation-for="RecordTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="ثبت" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">برگشت به لیست</a>
 </div>
 
 @section Scripts {
