@@ -21,7 +21,7 @@ namespace LaboratoryQualityControl.Controllers
         // GET: LogBookDevices
         public async Task<IActionResult> Index()
         {
-            var laboratoryQCContext = _context.LogBookDevices.Include(l => l.Device).Include(l => l.User).Include(l => l.deviceStatus);
+            var laboratoryQCContext = _context.LogBookDevices.Include(l => l.Device).Include(l => l.User).Include(l => l.deviceStatus).Include(l=> l.Shift);
             return View(await laboratoryQCContext.ToListAsync());
         }
 
@@ -36,6 +36,8 @@ namespace LaboratoryQualityControl.Controllers
             var logBookDevice = await _context.LogBookDevices
                 .Include(l => l.Device)
                 .Include(l => l.User)
+                .Include(l=> l.deviceStatus)
+                .Include(l=> l.Shift)
                 .FirstOrDefaultAsync(m => m.IdLogBook == id);
             if (logBookDevice == null)
             {
@@ -52,6 +54,7 @@ namespace LaboratoryQualityControl.Controllers
             ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName");
             ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName");
             ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName");
+            ViewData["ShiftID"] = new SelectList(_context.Shifts.OrderBy(o => o.InOrder), "ShiftID", "ShiftName");
             return View();
         }
 
@@ -60,7 +63,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
+        public async Task<IActionResult> Create([Bind("IdLogBook,DeviceCode,UserCode,ShiftID,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
         {
             if (ModelState.IsValid)
             {
@@ -72,6 +75,7 @@ namespace LaboratoryQualityControl.Controllers
             ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
             ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
             ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
+            ViewData["ShiftID"] = new SelectList(_context.Shifts.OrderBy(o => o.InOrder), "ShiftID", "ShiftName",logBookDevice.ShiftID);
             return View(logBookDevice);
         }
 
@@ -91,6 +95,7 @@ namespace LaboratoryQualityControl.Controllers
             ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
             ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
             ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
+            ViewData["ShiftID"] = new SelectList(_context.Shifts.OrderBy(o => o.InOrder), "ShiftID", "ShiftName", logBookDevice.ShiftID);
             return View(logBookDevice);
         }
 
@@ -99,7 +104,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdLogBook,DeviceCode,UserCode,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
+        public async Task<IActionResult> Edit(int id, [Bind("IdLogBook,DeviceCode,UserCode,ShiftID,DoTime,StartTime,EndTime,DeviceStatusID,Description,RecordTime")] LogBookDevice logBookDevice)
         {
             if (id != logBookDevice.IdLogBook)
             {
@@ -129,6 +134,7 @@ namespace LaboratoryQualityControl.Controllers
             ViewData["DeviceCode"] = new SelectList(_context.Devices, "DeviceCode", "DeviceName", logBookDevice.DeviceCode);
             ViewData["UserCode"] = new SelectList(_context.User, "UserCode", "NickName", logBookDevice.UserCode);
             ViewData["DeviceStatusID"] = new SelectList(_context.DeviceStatuses.OrderBy(o => o.InOrder), "DeviceStatusID", "DeviceStatusName",logBookDevice.DeviceStatusID);
+            ViewData["ShiftID"] = new SelectList(_context.Shifts.OrderBy(o => o.InOrder), "ShiftID", "ShiftName", logBookDevice.ShiftID);
             return View(logBookDevice);
         }
 
@@ -144,6 +150,7 @@ namespace LaboratoryQualityControl.Controllers
                 .Include(l => l.Device)
                 .Include(l => l.User)
                 .Include(l=>l.deviceStatus)
+                .Include(l=> l.Shift)
                 .FirstOrDefaultAsync(m => m.IdLogBook == id);
             if (logBookDevice == null)
             {

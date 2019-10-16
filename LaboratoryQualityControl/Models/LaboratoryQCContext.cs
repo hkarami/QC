@@ -34,6 +34,7 @@ namespace LaboratoryQualityControl.Models
         public DbSet<DeviceType> DeviceTypes { get; set; }
         public DbSet<DeviceStatus> DeviceStatuses { get; set; }
         public DbSet<SupportCompany> SupportCompanies { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
 
     }
 }

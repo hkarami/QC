@@ -1,24 +1,28 @@
 ﻿@model LaboratoryQualityControl.Models.LogBookDevice
-<div class="row">
-    <div class="col-3">
-        <label asp-for="DeviceCode" class="control-label"></label>
-        <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="DeviceCode" class="control-label"></label>
+            <select asp-for="DeviceCode" class="form-control" asp-items="ViewBag.DeviceCode"></select>
+        </div>
+        <div class="col">
+            <label asp-for="UserCode" class="control-label"></label>
+            <select asp-for="UserCode" class="form-control" asp-items="ViewBag.UserCode"></select>
+        </div>
+        <div class="col">
+            <label asp-for="ShiftID" class="control-label"></label>
+            <select asp-for="ShiftID" class="form-control" asp-items="ViewBag.ShiftID"></select>
+        </div>
+        <div class="col">
+            <label asp-for="DoTime" class="control-label"></label>
+            <input asp-for="DoTime" class="form-control" />
+            <span asp-validation-for="DoTime" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <label asp-for="StartTime" class="control-label"></label>
+            <input asp-for="StartTime" class="form-control" />
+            <span asp-validation-for="StartTime" class="text-danger"></span>
+        </div>
     </div>
-    <div class="col">
-        <label asp-for="UserCode" class="control-label"></label>
-        <select asp-for="UserCode" class="form-control" asp-items="ViewBag.UserCode"></select>
-    </div>
-    <div class="col">
-        <label asp-for="DoTime" class="control-label"></label>
-        <input asp-for="DoTime" class="form-control" />
-        <span asp-validation-for="DoTime" class="text-danger"></span>
-    </div>
-    <div class="col">
-        <label asp-for="StartTime" class="control-label"></label>
-        <input asp-for="StartTime" class="form-control" />
-        <span asp-validation-for="StartTime" class="text-danger"></span>
-    </div>
-</div>
 <div class="row">
     <div class="col">
         <label asp-for="EndTime" class="control-label"></label>

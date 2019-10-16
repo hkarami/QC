@@ -18,6 +18,8 @@ namespace LaboratoryQualityControl.Models
         public int DeviceCode { get; set; }
         [DisplayName(" کاربر")]
         public int UserCode { get; set; }
+        [DisplayName("شیفت")]
+        public int ShiftID { get; set; }
         [DisplayName("تاریخ")]
         public DateTime DoTime { get; set; }
         [DisplayName("زمان شروع استفاده")]
@@ -34,5 +36,6 @@ namespace LaboratoryQualityControl.Models
         public virtual User User { get; set; }
         public virtual Device Device { get; set; }
         public virtual DeviceStatus deviceStatus { get; set; }
+        public virtual Shift Shift { get; set; }
     }
 }

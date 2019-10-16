@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserCode)
             </th>
+            <th>
+                @Html.DisplayNameFor(model=> model.Shift.ShiftName)
+            </th>
 
             <th>
                 @Html.DisplayNameFor(model => model.StartTime)
@@ -66,7 +69,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User.NickName)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem =>item.Shift.ShiftName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StartTime)
             </td>
