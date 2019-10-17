@@ -35,6 +35,11 @@ namespace LaboratoryQualityControl.Models
         public DbSet<DeviceStatus> DeviceStatuses { get; set; }
         public DbSet<SupportCompany> SupportCompanies { get; set; }
         public DbSet<Shift> Shifts { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<RulesQC> RulesQCs { get; set; }
+        public DbSet<Analyte> Analytes { get; set; }
+        public DbSet<Material> Materials { get; set; }
+        public DbSet<AnalyteMaterial> AnalyteMaterials { get; set; }
 
     }
 }
