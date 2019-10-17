@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LaboratoryQualityControl.Models2
+namespace LaboratoryQualityControl.Models
 {
     public partial class BloodControl
     {
+        #region [Ctor]
         public BloodControl()
         {
             BloodControlDetails = new HashSet<BloodControlDetails>();
         }
+        #endregion
+        #region [Properties]
 
         public int BloodControlId { get; set; }
         public string Name { get; set; }
@@ -29,10 +32,13 @@ namespace LaboratoryQualityControl.Models2
         public int? UserCode { get; set; }
         public DateTime? LastUpdateTime { get; set; }
         public DateTime? RecordTime { get; set; }
+        #endregion
 
+        #region [Navigation Properties]
         public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
-        public virtual Users UserCodeNavigation { get; set; }
+        public virtual User User{ get; set; }
         public virtual ICollection<BloodControlDetails> BloodControlDetails { get; set; }
+        #endregion
     }
 }

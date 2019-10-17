@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LaboratoryQualityControl.Models2
+namespace LaboratoryQualityControl.Models
 {
     public partial class BloodControlDetails
     {
+        #region [Ctor]
+        public BloodControlDetails()
+        {
+
+        }
+        #endregion
+
+        #region [Properties]
         public int BloodControlDetailsId { get; set; }
         public int? BloodControlId { get; set; }
         public decimal? Value { get; set; }
@@ -15,8 +23,12 @@ namespace LaboratoryQualityControl.Models2
         public DateTime? LastUpdateTime { get; set; }
         public DateTime? RecordTime { get; set; }
 
+        #endregion
+
+        #region [Navigation Properties]
         public virtual BloodControl BloodControl { get; set; }
-        public virtual RulesQcdetails RulesQcdetails { get; set; }
-        public virtual Users UserCodeNavigation { get; set; }
+        public virtual RulesQCDetails RulesQcdetails { get; set; }
+        public virtual User User { get; set; }
+        #endregion
     }
 }
