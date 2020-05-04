@@ -1,32 +1,44 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
+<head>
     <base href="%PUBLIC_URL%/" />
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>my_new_app</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/Content/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Content/css/adminlte.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/Content/plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="/Content/plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="/Content/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/Content/plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="/Content/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- bootstrap rtl -->
+    <link rel="stylesheet" href="/Content/css/bootstrap-rtl.min.css">
+    <!-- template rtl version -->
+    <link rel="stylesheet" href="/Content/css/custom-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <div id="root" class="wrapper"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -37,5 +49,44 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+
+    <script type="text/javascript" src="/static/js/bundle.js"></script>
+    <!-- jQuery -->
+    <script src="/Content/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="/Content/plugins/morris/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="/Content/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/Content/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="/Content/plugins/knob/jquery.knob.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="/Content/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="/Content/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="/Content/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="/Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/Content/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/Content/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="/Content/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/Content/js/demo.js"></script>
+</body>
 </html>

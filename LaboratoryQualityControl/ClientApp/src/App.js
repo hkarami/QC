@@ -1,20 +1,25 @@
+//import 'bootstrap/dist/css/bootstrap.css';
 import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import { BrowserRouter } from 'react-router-dom';
+
+import { Layout } from './components/Layout/Layout';
+import Routes from './components/Layout/Routes';
+
+const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 
 export default class App extends Component {
-  static displayName = App.name;
+    static displayName = App.name;
 
-  render () {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <BrowserRouter basename={baseUrl}>
+                <Layout >
+                    <Routes />
+                </Layout>
+            </BrowserRouter>
+        );
+    }
 }
+
+
+
