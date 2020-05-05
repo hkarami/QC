@@ -40,6 +40,7 @@ namespace LaboratoryQualityControl.Models
         public DbSet<Analyte> Analytes { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<AnalyteMaterial> AnalyteMaterials { get; set; }
+        public DbSet<LaboratoryQualityControl.Models.BloodControl> BloodControl { get; set; }
 
     }
 }

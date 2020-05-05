@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LaboratoryQualityControl.DataAccess
 {
-    interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity> where TEntity : class, new()
     {
         #region [Methods]
         TEntity GetById(object entityId);

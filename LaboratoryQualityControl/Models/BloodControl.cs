@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace LaboratoryQualityControl.Models
 {
-    public partial class BloodControl
+    public partial class BloodControl : BaseEntity
     {
         #region [Ctor]
-        public BloodControl()
+        public BloodControl() : base()
         {
             BloodControlDetails = new HashSet<BloodControlDetails>();
         }
@@ -37,7 +37,7 @@ namespace LaboratoryQualityControl.Models
         #region [Navigation Properties]
         public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
-        public virtual User User{ get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<BloodControlDetails> BloodControlDetails { get; set; }
         #endregion
     }

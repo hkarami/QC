@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LaboratoryQualityControl.Models;
+using LaboratoryQualityControl.Services.BloodControls;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,7 @@ namespace LaboratoryQualityControl
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<LaboratoryQCContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:LaboratoryQC"]));
+            services.AddScoped<IBloodControlService, BloodControlService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSpaStaticFiles(options =>
@@ -64,14 +66,14 @@ namespace LaboratoryQualityControl
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}");
             });
 
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsProduction())
+                //if (env.IsProduction())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
