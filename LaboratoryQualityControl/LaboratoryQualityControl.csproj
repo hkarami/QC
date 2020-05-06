@@ -3393,7 +3393,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Analytes\" />
     <Folder Include="wwwroot\Menu\Template1\" />
   </ItemGroup>
 

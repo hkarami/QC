@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("SupportCompany")]
-    public class SupportCompany
+    public class SupportCompany : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

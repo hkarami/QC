@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("Unit")]
-    public class Unit
+    public class Unit : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

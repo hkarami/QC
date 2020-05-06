@@ -53,7 +53,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySections laboratorySections)
+        public async Task<IActionResult> Create([Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySection laboratorySections)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace LaboratoryQualityControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySections laboratorySections)
+        public async Task<IActionResult> Edit(int id, [Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySection laboratorySections)
         {
             if (id != laboratorySections.SectionCodeLab)
             {

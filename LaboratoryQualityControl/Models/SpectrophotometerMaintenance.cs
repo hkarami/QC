@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("SpectrophotometerMaintenance")]
-    public class SpectrophotometerMaintenance
+    public class SpectrophotometerMaintenance : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

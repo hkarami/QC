@@ -8,7 +8,7 @@ namespace LaboratoryQualityControl.Models
         #region [Ctor]
         public BloodControl() : base()
         {
-            BloodControlDetails = new HashSet<BloodControlDetails>();
+            BloodControlDetails = new HashSet<BloodControlDetail>();
         }
         #endregion
         #region [Properties]
@@ -38,7 +38,7 @@ namespace LaboratoryQualityControl.Models
         public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<BloodControlDetails> BloodControlDetails { get; set; }
+        public virtual ICollection<BloodControlDetail> BloodControlDetails { get; set; }
         #endregion
     }
 }

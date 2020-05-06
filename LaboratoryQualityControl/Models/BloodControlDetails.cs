@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace LaboratoryQualityControl.Models
 {
-    public partial class BloodControlDetails
+    public partial class BloodControlDetail : BaseEntity
     {
         #region [Ctor]
-        public BloodControlDetails()
+        public BloodControlDetail()
         {
 
         }

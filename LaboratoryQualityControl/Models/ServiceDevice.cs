@@ -10,7 +10,7 @@ namespace LaboratoryQualityControl.Models
 {
     [Table("ServiceDevice")]
 
-    public class ServiceDevice
+    public class ServiceDevice : BaseEntity
     {
         [Key]
         [DisplayName("کد")]

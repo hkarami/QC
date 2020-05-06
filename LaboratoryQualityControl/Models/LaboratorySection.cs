@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("LaboratorySections")]
-    public class LaboratorySections
+    public class LaboratorySection : BaseEntity
     {
         [Key]
         [DisplayName("کد بخش آزمایشگاه")]

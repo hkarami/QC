@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace LaboratoryQualityControl.Models
 {
     [Table("Device")]
-    public class Device
+    public class Device : BaseEntity
     {
         #region Properties  
         [Key]
@@ -98,7 +98,7 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         #endregion
         #region by_ForeignKey
-        public virtual LaboratorySections LaboratorySections { get; set; }
+        public virtual LaboratorySection LaboratorySections { get; set; }
         public virtual DeviceType DeviceType { get; set; }
         public virtual User User { get; set; }
         #endregion

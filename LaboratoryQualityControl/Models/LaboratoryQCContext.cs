@@ -15,7 +15,7 @@ namespace LaboratoryQualityControl.Models
 
         }
         public DbSet<Device> Devices { get; set; }
-        public DbSet<LaboratorySections> LaboratorySections { get; set; }
+        public DbSet<LaboratorySection> LaboratorySections { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<LogBookDevice> LogBookDevices { get; set; }

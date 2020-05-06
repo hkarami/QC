@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("Users")]
-    public class User
+    public class User:BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -116,7 +116,7 @@ namespace LaboratoryQualityControl.Models
         public virtual MaritalStatus MaritalStatus { get; set; }
         public virtual EducationalCertificate EducationalCertificate { get; set; }
         public virtual BloodType BloodType { get; set; }
-        public virtual LaboratorySections LaboratorySections { get; set; }
+        public virtual LaboratorySection LaboratorySections { get; set; }
         public virtual EmploymentStatus EmploymentStatus { get; set; }
         #endregion
         public virtual ICollection<Device> Devices { get; set; }

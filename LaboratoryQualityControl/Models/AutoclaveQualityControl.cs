@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("AutoclaveQualityControl")]
-    public class AutoclaveQualityControl
+    public class AutoclaveQualityControl : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
