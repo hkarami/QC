@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -34,7 +35,7 @@ namespace LaboratoryQualityControl.Models
          [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
         public virtual User User { get; set; }
-        public virtual Device Device { get; set; }
+        public virtual DeviceModel Device { get; set; }
         public virtual DeviceStatus deviceStatus { get; set; }
         public virtual Shift Shift { get; set; }
     }

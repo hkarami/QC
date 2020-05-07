@@ -1,22 +1,18 @@
-﻿using LaboratoryQualityControl.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.Devices
 {
-    interface IDeviceService
+    public interface IDeviceService
     {
         #region [Methods]
-        Device GetDeviceByID(int DeviceCode);
+         Device GetDeviceByID(int deviceCode);
         void DeleteDevice(Device device);
         IList<Device> GetAllDevice();
         void UpdateDevice(Device device);
         void InsertDevice(Device device);
+        Task InsertDeviceAsync(Device device);
         #endregion
-
-
-
     }
 }

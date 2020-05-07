@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LaboratoryQualityControl.Models;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -14,7 +14,7 @@ namespace LaboratoryQualityControl.Models
         {
 
         }
-        public DbSet<Device> Devices { get; set; }
+        public DbSet<DeviceModel> Devices { get; set; }
         public DbSet<LaboratorySection> LaboratorySections { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Role> Roles { get; set; }

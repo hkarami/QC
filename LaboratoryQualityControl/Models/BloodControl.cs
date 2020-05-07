@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -12,7 +14,8 @@ namespace LaboratoryQualityControl.Models
         }
         #endregion
         #region [Properties]
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BloodControlId { get; set; }
         public string Name { get; set; }
         public int? AnalyteId { get; set; }

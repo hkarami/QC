@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -47,7 +48,7 @@ namespace LaboratoryQualityControl.Models
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("FunctorUserIncubatorMaintenance")]
         public virtual User UserFunctor { get; set; }
-        public virtual Device Device { get; set; }
+        public virtual DeviceModel Device { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("UserConfirmIncubatorMaintenance")]
         public virtual User UserConfirm { get; set; }

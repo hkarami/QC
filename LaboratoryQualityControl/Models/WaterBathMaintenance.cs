@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -43,7 +44,7 @@ namespace LaboratoryQualityControl.Models
         public DateTime UpdateRecordTime { get; set; }
         [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual Device Device { get; set; } 
+        public virtual DeviceModel Device { get; set; } 
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("UserFunctorWaterBathMaintenance")]
         public virtual User UserFunctor { get; set; }

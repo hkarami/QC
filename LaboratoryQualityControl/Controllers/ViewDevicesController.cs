@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LaboratoryQualityControl.Models;
 
 namespace LaboratoryQualityControl.Controllers
 {
@@ -71,7 +71,7 @@ namespace LaboratoryQualityControl.Controllers
             }
             //ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
             ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab",device.SectionCodeLab);
-            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName",device.DeviceTypeID);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName",device.DeviceTypeId);
             ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName",device.UserCode);
             return View(device);
         }
@@ -90,7 +90,7 @@ namespace LaboratoryQualityControl.Controllers
                 return NotFound();
             }
             ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab", device.SectionCodeLab);
-            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeID);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeId);
             ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName", device.UserCode);
             return View(device);
         }
@@ -130,7 +130,7 @@ namespace LaboratoryQualityControl.Controllers
             }
             //ViewData["SectionCodeLab"] = new SelectList(_context.LaboratorySections, "SectionCodeLab", "SectionCodeLab", device.SectionCodeLab);
             ViewData["SectionNameLab"] = new SelectList(_context.LaboratorySections.OrderBy(o => o.InOrder), "SectionCodeLab", "SectionNameLab", device.SectionCodeLab);
-            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeID);
+            ViewData["DeviceTypeName"] = new SelectList(_context.DeviceTypes.OrderBy(o => o.InOrder), "DeviceTypeID", "DeviceTypeName", device.DeviceTypeId);
             ViewData["Users"] = new SelectList(_context.User, "UserCode", "NickName", device.UserCode);
             return View(device);
         }

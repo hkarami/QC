@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -22,7 +23,7 @@ namespace LaboratoryQualityControl.Models
         public int InOrder { get; set; }
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime{ get; set; }
-        public virtual ICollection<Device> Devices { get; set; }
+        public virtual ICollection<DeviceModel> Devices { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

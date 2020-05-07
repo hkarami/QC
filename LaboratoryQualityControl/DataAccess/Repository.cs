@@ -1,7 +1,8 @@
-﻿using LaboratoryQualityControl.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.DataAccess
 {
@@ -49,13 +50,23 @@ namespace LaboratoryQualityControl.DataAccess
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
+            //_context.Entry()
             _entities.Update(entity);
             _context.SaveChanges();
+        }
+
+        public async Task InsertAsync(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            _entities.Add(entity);
+            await _context.SaveChangesAsync();
         }
         #endregion
 
         #region [Properties]
-        public IQueryable<TEntity> Table => _entities;
+        public DbSet<TEntity> Table => _entities;
 
         #endregion
     }

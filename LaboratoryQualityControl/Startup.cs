@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LaboratoryQualityControl.Models;
+﻿using LaboratoryQualityControl.DataAccess;
+using LaboratoryQualityControl.Domain;
 using LaboratoryQualityControl.Services.BloodControls;
+using LaboratoryQualityControl.Services.Devices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
@@ -34,8 +31,14 @@ namespace LaboratoryQualityControl
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<LaboratoryQCContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:LaboratoryQC"]));
+            services.AddDbContext<LaboratoryQCContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration["ConnectionString:LaboratoryQC"]);
+            });
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IBloodControlService, BloodControlService>();
+            services.AddScoped<IDeviceService, DeviceService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSpaStaticFiles(options =>
@@ -61,12 +64,12 @@ namespace LaboratoryQualityControl
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseCookiePolicy();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}");
+
             });
 
             app.UseSpa(spa =>

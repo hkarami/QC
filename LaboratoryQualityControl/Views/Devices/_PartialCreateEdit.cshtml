@@ -1,4 +1,4 @@
-﻿@model LaboratoryQualityControl.Models.Device
+﻿@model LaboratoryQualityControl.Domain.Device
 <div class="row">
     <div class="col">
         <label asp-for="DeviceName" class="control-label"></label>
@@ -6,8 +6,8 @@
         <span asp-validation-for="DeviceType" class="text-danger"></span>
     </div>
     <div class="col">
-        <label asp-for="DeviceTypeID" class="control-label"></label>
-        <select asp-for="DeviceTypeID" class="form-control" asp-items="ViewBag.DeviceTypeName"></select>
+        <label asp-for="DeviceTypeId" class="control-label"></label>
+        <select asp-for="DeviceTypeId" class="form-control" asp-items="ViewBag.DeviceTypeName"></select>
     </div>
     <div class="col">
         <label asp-for="Factory" class="control-label"></label>

@@ -1,9 +1,9 @@
 ﻿using LaboratoryQualityControl.DataAccess;
-using LaboratoryQualityControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.Users
 {

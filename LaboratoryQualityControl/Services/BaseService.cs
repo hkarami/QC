@@ -1,5 +1,5 @@
 ﻿using LaboratoryQualityControl.DataAccess;
-using LaboratoryQualityControl.Models;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services
 {

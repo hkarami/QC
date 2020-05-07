@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LaboratoryQualityControl.DataAccess;
-using LaboratoryQualityControl.Models;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.BloodControls
 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LaboratoryQualityControl.DataAccess
 {
@@ -11,13 +12,15 @@ namespace LaboratoryQualityControl.DataAccess
 
         void Insert(TEntity entity);
 
+        Task InsertAsync(TEntity entity);
+
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
 
         #endregion
         #region [Properties]
-        IQueryable<TEntity> Table { get; }
+        DbSet<TEntity> Table { get; }
         #endregion
     }
 }

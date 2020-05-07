@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -52,7 +53,7 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Device Device { set; get; }
+        public virtual DeviceModel Device { set; get; }
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("FunctorUserAutoclaveQualityControls")]
         public virtual User UserFunctor { set; get; }

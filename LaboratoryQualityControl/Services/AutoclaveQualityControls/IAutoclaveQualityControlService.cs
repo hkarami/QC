@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LaboratoryQualityControl.Models;
+using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.AutoclaveQualityControls
 {

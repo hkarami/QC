@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
@@ -51,7 +52,7 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         public virtual User User { get; set; }
         public virtual LocationService LocationService { get; set; }
-        public virtual Device Device { get; set; }
+        public virtual DeviceModel Device { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("ConfirmUserServiceDevices")]
         public virtual User ConfirmUser { get; set; }

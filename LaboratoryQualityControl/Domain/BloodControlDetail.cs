@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LaboratoryQualityControl.Models
+namespace LaboratoryQualityControl.Domain
 {
     public partial class BloodControlDetail : BaseEntity
     {
@@ -13,6 +14,8 @@ namespace LaboratoryQualityControl.Models
         #endregion
 
         #region [Properties]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BloodControlDetailsId { get; set; }
         public int? BloodControlId { get; set; }
         public decimal? Value { get; set; }
