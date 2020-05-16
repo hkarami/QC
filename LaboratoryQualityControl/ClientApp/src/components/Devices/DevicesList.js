@@ -16,8 +16,8 @@ export default class DevicesList extends React.Component {
       return ( 
         <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }}>
           <ColumnsDirective>
-                <ColumnDirective field='deviceCode' width='100' textAlign="Right" />
-                <ColumnDirective field='deviceName' width='100' /> 
+                <ColumnDirective field='DeviceCode' width='100' textAlign="Right" />
+                <ColumnDirective field='DeviceName' width='100' /> 
             </ColumnsDirective>
         </GridComponent> );
   }

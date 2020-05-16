@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 
 namespace LaboratoryQualityControl
 {
@@ -36,11 +37,19 @@ namespace LaboratoryQualityControl
                 opts.UseSqlServer(Configuration["ConnectionString:LaboratoryQC"]);
             });
 
+            services.AddCors((co) =>
+            {
+                co.AddPolicy("Test",(cb) =>
+                {
+                    cb.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().Build();
+                });
+            });
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IBloodControlService, BloodControlService>();
             services.AddScoped<IDeviceService, DeviceService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                        .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); ;
             services.AddSpaStaticFiles(options =>
             {
                 options.RootPath = "ClientApp/Build";
@@ -59,7 +68,7 @@ namespace LaboratoryQualityControl
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("Test");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

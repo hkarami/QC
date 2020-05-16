@@ -16,8 +16,8 @@ function Routes(props) {
             <Route component='' path='/SpectrophotometerMaintenances' />
             <Route component='' path='/PhotometerMaintenances' />
             <Route component='' path='/PhotometerM]aintenances' />
-            <Route component='' path='/Users' />*/}
-            <Redirect to="/" />
+            <Route component='' path='/Users' />
+            <Redirect to="/" />*/}
         </Switch>
     );
 }
