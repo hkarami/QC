@@ -6,7 +6,7 @@ using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.Analytes
 {
-    interface IAnalyteService
+    public interface IAnalyteService
     {
         #region [Methods]
         Analyte GetAnalyteByID(int analyteid);

@@ -18,7 +18,7 @@ namespace LaboratoryQualityControl.Domain
         [DisplayName("وضعیت نمایش")]
         public bool Visible { get; set; }
         [DisplayName("ترتیب نمایش")]
-        public int InOrder { get; set; }
+        public byte InOrder { get; set; }
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime { get; set; }
         public virtual ICollection<RulesQCDetails> RulesQCDetails { get; set; }

@@ -24,6 +24,6 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime { get; set; }
         public virtual ICollection<RulesQCDetails> RulesQCDetails { get; set; }
-        public virtual ICollection<Analyte> Analytes { get; set; }
+        //public virtual ICollection<Analyte> Analytes { get; set; }
     }
 }

@@ -45,7 +45,6 @@ namespace LaboratoryQualityControl.Models.Api
         #region [Properties]
         [DataMember]
         public TRequiredModel Data { get; set; }
-
         #endregion
     }
 }

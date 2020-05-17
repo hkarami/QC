@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace LaboratoryQualityControl.Models
 {
-    [Table("AnalyteMaterial")]
-    public class AnalyteMaterial : BaseEntity
+
+    public class AnalyteMaterial 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,7 +27,7 @@ namespace LaboratoryQualityControl.Models
         public DateTime LastUpdateTime { get; set; }
         [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual Analyte Analyte { get; set; }
+        //public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
         public virtual User User { get; set; }
     }

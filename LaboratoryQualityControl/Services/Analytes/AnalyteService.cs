@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LaboratoryQualityControl.DataAccess;
 using LaboratoryQualityControl.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaboratoryQualityControl.Services.Analytes
 {
@@ -28,12 +29,15 @@ namespace LaboratoryQualityControl.Services.Analytes
 
         public IList<Analyte> GetAllAnalyte()
         {
-            return MainRepository.Table.ToList();
+            //return MainRepository.Table.ToList();
+            return DbContext.Analytes.Include(u => u.User)
+                .Include(r => r.RulesQC)
+                .Include(u=> u.Unit).ToList();
         }
 
         public Analyte GetAnalyteByID(int analyteID)
         {
-            if (analyteID==0)
+            if (analyteID == 0)
             {
                 return null;
             }
@@ -42,15 +46,16 @@ namespace LaboratoryQualityControl.Services.Analytes
 
         public void InsertAnalyte(Analyte analyte)
         {
-            if (analyte==null)
+            if (analyte == null)
             {
                 throw new ArgumentNullException(nameof(analyte));
             }
-            MainRepository.Insert(analyte);        }
+            MainRepository.Insert(analyte);
+        }
 
         public void UpdateAnalyte(Analyte analyte)
         {
-            if (analyte==null)
+            if (analyte == null)
             {
                 throw new ArgumentNullException(nameof(analyte));
             }

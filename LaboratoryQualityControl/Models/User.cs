@@ -126,7 +126,7 @@ namespace LaboratoryQualityControl.Models
         public virtual ICollection<ServiceDevice> ServiceDevices { get; set; }
         public virtual ICollection<ServiceDevice> ConfirmUserServiceDevices { get; set; }
         public virtual ICollection<ServiceDevice> UserDisinfectantServiceDevices { get; set; }
-        public virtual ICollection<Analyte> Analytes { get; set; }
+        //public virtual ICollection<Analyte> Analytes { get; set; }
         public virtual ICollection<Material> Materials { get; set;}
         public virtual ICollection<AnalyteMaterial> AnalyteMaterials { get; set; }
         

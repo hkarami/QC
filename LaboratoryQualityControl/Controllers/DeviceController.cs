@@ -103,10 +103,14 @@ namespace LaboratoryQualityControl.Controllers
                 {
                     deviceResponse.Data.Add(ToModel(device));
                 }
+
+                deviceResponse.Count = deviceResponse.Data.Count;
+                deviceResponse.Items = deviceResponse.Data;
+                //deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError, "UnknownError"));
             }
             catch (Exception e)
             {
-                deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError));
+                deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError, "UnknownError"));
             }
 
             return deviceResponse;

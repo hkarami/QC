@@ -22,6 +22,9 @@ namespace LaboratoryQualityControl.Models
         public TModel Data { get; set; }
 
         [DataMember]
+        public TModel Items { get; set; }
+
+        [DataMember]
         public List<ApiError> Errors { get; set; }
 
         [DataMember]
@@ -29,6 +32,9 @@ namespace LaboratoryQualityControl.Models
 
         [DataMember]
         public int RequestID { get; set; }
+
+        [DataMember]
+        public int Count { get; set; }
 
         #endregion
     }

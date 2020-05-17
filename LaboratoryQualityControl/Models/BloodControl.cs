@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LaboratoryQualityControl.Models
 {
-    public partial class BloodControl : BaseEntity
+    public partial class BloodControl 
     {
         #region [Ctor]
         public BloodControl() : base()
@@ -38,7 +38,7 @@ namespace LaboratoryQualityControl.Models
         #endregion
 
         #region [Navigation Properties]
-        public virtual Analyte Analyte { get; set; }
+        //public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<BloodControlDetail> BloodControlDetails { get; set; }
