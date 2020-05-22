@@ -9,6 +9,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="ClientApp\src\components\Devices\Create.cshtml" />
+    <Content Remove="ClientApp\src\components\Devices\Delete.cshtml" />
+    <Content Remove="ClientApp\src\components\Devices\Details.cshtml" />
+    <Content Remove="ClientApp\src\components\Devices\Edit.cshtml" />
+    <Content Remove="ClientApp\src\components\Devices\Index.cshtml" />
+    <Content Remove="ClientApp\src\components\Devices\_PartialCreateEdit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\src\Components\Layout\ContentHeader.js" />
     <None Remove="ClientApp\src\components\Layout\Content\css\adminlte.css" />
     <None Remove="ClientApp\src\components\Layout\Content\css\adminlte.css.map" />

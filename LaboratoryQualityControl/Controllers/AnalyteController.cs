@@ -27,7 +27,7 @@ namespace LaboratoryQualityControl.Controllers
         }
         #endregion
         #region [Utilities]
-        private AnalyteModel ToModel(Analyte  analyte)
+        private AnalyteModel ToModel(Domain.Analyte analyte)
         {
             return  new AnalyteModel
             {
@@ -86,7 +86,7 @@ namespace LaboratoryQualityControl.Controllers
 
         // POST: api/Analyte
         [HttpPost]
-        public void Post([FromBody] Analyte analyte)
+        public void Post([FromBody] Models.Analyte analyte)
         {
 
         }

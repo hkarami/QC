@@ -58,16 +58,16 @@ export class Sidebar extends Component {
                                                 <i className="fa fa-circle-o nav-icon"></i>
                                                 <p>داشبورد اول</p>
                                             </a>*/}
-                                            <a asp-area="" asp-controller="devices" asp-action="index" className="nav-link">
+                                            <NavLink to="/devices" className="nav-link">
                                                 <i className="fa fa-circle-o nav-icon"></i>
                                                 <p> شناسنامه تجهیزات </p>
-                                            </a>
+                                             </NavLink>
                                         </li>
-                                        <li className="nav-item">
-                                            <a asp-area="" asp-controller="LogBookDevices" asp-action="index" className="nav-link">
+                        <li className="nav-item">
+                          <NavLink to="/LogBookDevices"  className="nav-link">
                                                 <i className="fa fa-circle-o nav-icon"></i>
-                                                <p> تجهیزات Log Book </p>
-                                            </a>
+                            <p> تجهیزات Log Book </p>
+                          </NavLink>
                                         </li>
                                         <li className="nav-item">
                                             <a asp-area="" asp-controller="ServiceDevices" asp-action="index" className="nav-link">
