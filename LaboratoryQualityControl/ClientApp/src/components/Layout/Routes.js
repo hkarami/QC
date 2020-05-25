@@ -4,12 +4,12 @@
 import { Route, Redirect, Switch } from 'react-router-dom';
 import DevicesList from '../Devices/DevicesList';
 //import Create from '../Devices/Create';
-import DeviceCreateEdit from '../Devices/DeviceCreateEdit'
+import Create from '../Devices/Create'
 function Routes(props) {
     return (
         <Switch>
-        <Route component={DevicesList} path='/Devices' />
-        <Route component={DeviceCreateEdit} path='/Create1' />
+            <Route component={DevicesList} path='/Devices' exact />
+            <Route component={Create} path='/Devices/Create' exact />
             {/*<Route component='' path='/LogBookDevices' />
             <Route component='' path='/ServiceDevices' />
             

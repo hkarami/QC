@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import DeviceCreateEdit from './DeviceCreateEdit'
 //import { data } from '../../DataSource.js';
 import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 //import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
@@ -18,14 +19,26 @@ export default class Create extends React.Component {
       this.editing = { allowDeleting: true, allowEditing: true };
     }
 
-
+    returnDevices = () => {
+        // Navigate to /products
+        //const ho = useHistory();
+        //ho.push("/Devices/Create");
+        this.props.history.push("/Devices");
+    };
     render() {
         return ( 
-            <div className='control-pane'>
-                <h1>تعریف تجهیزات</h1>
-                
-
-           </div>
+            <div>
+                <div className='control-pane'>
+                    <h1>تعریف تجهیزات</h1>
+                    <DeviceCreateEdit />
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" value="ثبت" class="fas fa-bell" />
+                </div>
+                <div class="col-md-12">
+                    <input onClick={this.returnDevices} type="submit" value="برگشت" class="fas fa-bell" />
+                </div>
+            </div>
         );
   }
 }

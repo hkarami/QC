@@ -18,21 +18,33 @@ export default class DevicesList extends React.Component {
       this.editing = { allowDeleting: true, allowEditing: true };
     }
 
-
+    addDevice = () => {
+        // Navigate to /products
+        //const ho = useHistory();
+        //ho.push("/Devices/Create");
+        this.props.history.push("/Devices/Create");
+    };
     render() {
-      return ( 
-        <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} allowSorting={true} allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems} editSettings={this.editing}>
-          <ColumnsDirective>
-            <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='50'></ColumnDirective>
-            <ColumnDirective field='DeviceCode' headerText='کد دستگاه' width='70' textAlign="Right" />
-            <ColumnDirective field='DeviceName' headerText='نام دستگاه' width='100' /> 
-            <ColumnDirective field='DeviceTypeName' headerText='نوع دستگاه' width='80' /> 
-            <ColumnDirective field='LaboratorySectionName' headerText='بخش' width='100' /> 
-            <ColumnDirective field='SupportCompany' headerText='شرکت پشتیبان' width='130'   /> 
-            <ColumnDirective field='PhoneToSupportCompany' headerText='تلفن شرکت پشتیبان' width='100' />     
-            <ColumnDirective field='UserFullName' headerText='کاربر' width='100' /> 
-          </ColumnsDirective>
-          <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
-        </GridComponent> );
+        return ( 
+            <div className='control-pane'>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input onClick={this.addDevice} type="submit" value="اضافه" class="fas fa-bell" />
+                    </div>
+                </div>
+                <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} allowSorting={true} allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems} editSettings={this.editing}>
+                  <ColumnsDirective>
+                    <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='50'></ColumnDirective>
+                    <ColumnDirective field='DeviceCode' headerText='کد دستگاه' width='70' textAlign="Right" />
+                    <ColumnDirective field='DeviceName' headerText='نام دستگاه' width='100' /> 
+                    <ColumnDirective field='DeviceTypeName' headerText='نوع دستگاه' width='80' /> 
+                    <ColumnDirective field='LaboratorySectionName' headerText='بخش' width='100' /> 
+                    <ColumnDirective field='SupportCompany' headerText='شرکت پشتیبان' width='130'   /> 
+                    <ColumnDirective field='PhoneToSupportCompany' headerText='تلفن شرکت پشتیبان' width='100' />     
+                    <ColumnDirective field='UserFullName' headerText='کاربر' width='100' /> 
+                  </ColumnsDirective>
+                  <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
+                </GridComponent> 
+            </div>    );
   }
 }
