@@ -2,10 +2,10 @@
 
 namespace LaboratoryQualityControl.Models.Devices
 {
-    public class DeviceResponseModel : ApiResult<List<DeviceModel>>
+    public class DevicesResponseModel : ApiResult<List<DeviceModel>>
     {
         #region [Ctor]
-        public DeviceResponseModel()
+        public DevicesResponseModel()
         {
             Data = new List<DeviceModel>();
         }

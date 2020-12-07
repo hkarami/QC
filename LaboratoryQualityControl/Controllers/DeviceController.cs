@@ -1,12 +1,11 @@
-﻿using System;
-using LaboratoryQualityControl.Services.Devices;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LaboratoryQualityControl.Domain;
+﻿using LaboratoryQualityControl.Domain;
+using LaboratoryQualityControl.Factories;
 using LaboratoryQualityControl.Models.Api;
 using LaboratoryQualityControl.Models.Devices;
-using Microsoft.EntityFrameworkCore;
+using LaboratoryQualityControl.Services.Devices;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Controllers
 {
     [Route("api/[controller]")]
@@ -15,93 +14,31 @@ namespace LaboratoryQualityControl.Controllers
     {
         #region [Fields]
         private IDeviceService _deviceService;
-        #endregion
-
-        #region [Utilities]
-
-        private DeviceModel ToModel(Device device)
-        {
-            return new DeviceModel
-            {
-                DeviceCode = device.DeviceCode,
-                DeviceName = device.DeviceName,
-                DeviceTypeID = device.DeviceTypeId,
-                DeviceTypeName = device.DeviceType?.DeviceTypeName,
-                Factory = device.Factory,
-                Model = device.Model,
-                ManufacturingCountry = device.ManufacturingCountry,
-                SerialNumber = device.SerialNumber,
-                SupportCompany = device.SupportCompany,
-                Location = device.Location,
-                FeaturedUsers = device.FeaturedUsers,
-                IdentificationCode = device.IdentificationCode,
-                DateSubmittedToLab = device.DateSubmittedToLab,
-                SectionLaunchDate = device.SectionLaunchDATE,
-                DeliveryStatus = device.DeliveryStatus,
-                SpecialCharacteristic = device.SpecialCharacteristic,
-                RelatedEquipment = device.RelatedEquipment,
-                PhoneToSupportCompany = device.PhoneToSupportCompany,
-                SectionCodeLab = device.SectionCodeLab,
-                LaboratorySectionName = device.LaboratorySections?.SectionNameLab,
-                Other = device.Other,
-                UserCode = device.UserCode,
-                UserFullName = device.User?.NickName,
-                UpdateRecordTime = device.UpdateRecordTime,
-                RecordTime = device.RecordTime
-            };
-        }
-
-        private Device FromModel(DeviceModel deviceModel)
-        {
-            return new Device
-            {
-                DeviceCode = deviceModel.DeviceCode,
-                DeviceName = deviceModel.DeviceName,
-                DeviceTypeId = deviceModel.DeviceTypeID,
-                Factory = deviceModel.Factory,
-                Model = deviceModel.Model,
-                ManufacturingCountry = deviceModel.ManufacturingCountry,
-                SerialNumber = deviceModel.SerialNumber,
-                SupportCompany = deviceModel.SupportCompany,
-                Location = deviceModel.Location,
-                FeaturedUsers = deviceModel.FeaturedUsers,
-                IdentificationCode = deviceModel.IdentificationCode,
-                DateSubmittedToLab = deviceModel.DateSubmittedToLab,
-                SectionLaunchDATE = deviceModel.SectionLaunchDate,
-                DeliveryStatus = deviceModel.DeliveryStatus,
-                SpecialCharacteristic = deviceModel.SpecialCharacteristic,
-                RelatedEquipment = deviceModel.RelatedEquipment,
-                PhoneToSupportCompany = deviceModel.PhoneToSupportCompany,
-                SectionCodeLab = deviceModel.SectionCodeLab,
-                Other = deviceModel.Other,
-                UserCode = deviceModel.UserCode,
-                UpdateRecordTime = deviceModel.UpdateRecordTime,
-                RecordTime = deviceModel.RecordTime
-            };
-        }
-
+        private IDeviceMappingFactory _deviceMappingFactory;
         #endregion
 
         #region [Ctor]
-        public DeviceController(IDeviceService deviceService)
+        public DeviceController(IDeviceService deviceService, IDeviceMappingFactory deviceMappingFactory)
         {
             _deviceService = deviceService;
+            _deviceMappingFactory = deviceMappingFactory;
         }
         #endregion
 
         #region [Methods]
         // GET: api/Device
         [HttpGet]
-        public DeviceResponseModel Get()
+        public DevicesResponseModel Get()
         {
-            var deviceResponse = new DeviceResponseModel();
+            var deviceResponse = new DevicesResponseModel();
             try
             {
                 var devices = _deviceService.GetAllDevice();
 
                 foreach (var device in devices)
                 {
-                    deviceResponse.Data.Add(ToModel(device));
+                    var model = _deviceMappingFactory.ToModel(device);
+                    deviceResponse.Data.Add(model);
                 }
 
                 deviceResponse.Count = deviceResponse.Data.Count;
@@ -118,9 +55,9 @@ namespace LaboratoryQualityControl.Controllers
 
         // GET: api/Device/5
         [HttpGet("{deviceId}", Name = "Get")]
-        public DeviceResponseModel Get(int deviceId)
+        public DevicesResponseModel Get(int deviceId)
         {
-            var deviceResponse = new DeviceResponseModel();
+            var deviceResponse = new DevicesResponseModel();
 
             try
             {
@@ -130,8 +67,8 @@ namespace LaboratoryQualityControl.Controllers
                     deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.EntityNotFound));
                     return deviceResponse;
                 }
-
-                deviceResponse.Data.Add(ToModel(device));
+                var model = _deviceMappingFactory.ToModel(device);
+                deviceResponse.Data.Add(model);
             }
             catch (Exception e)
             {
@@ -143,9 +80,9 @@ namespace LaboratoryQualityControl.Controllers
 
         // POST: api/Device
         [HttpPost]
-        public async Task<DeviceResponseModel> Post([FromBody] Device device)
+        public async Task<DevicesResponseModel> Post([FromBody] Device device)
         {
-            var deviceResponse = new DeviceResponseModel();
+            var deviceResponse = new DevicesResponseModel();
             try
             {
 
@@ -154,7 +91,8 @@ namespace LaboratoryQualityControl.Controllers
                 else
                 {
                     await _deviceService.InsertDeviceAsync(device);
-                    deviceResponse.Data.Add(ToModel(device));
+                    var model = _deviceMappingFactory.ToModel(device);
+                    deviceResponse.Data.Add(model);
                 }
             }
             catch (Exception e)
@@ -167,9 +105,9 @@ namespace LaboratoryQualityControl.Controllers
 
         // PUT: api/Device/5
         [HttpPut]
-        public DeviceResponseModel Put([FromBody] Device device)
+        public DevicesResponseModel Put([FromBody] Device device)
         {
-            var deviceResponse = new DeviceResponseModel();
+            var deviceResponse = new DevicesResponseModel();
             try
             {
 
@@ -178,7 +116,8 @@ namespace LaboratoryQualityControl.Controllers
                 else
                 {
                     _deviceService.UpdateDevice(device);
-                    deviceResponse.Data.Add(ToModel(device));
+                    var model = _deviceMappingFactory.ToModel(device);
+                    deviceResponse.Data.Add(model);
                 }
             }
             catch (Exception e)
@@ -191,9 +130,9 @@ namespace LaboratoryQualityControl.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{deviceId}")]
-        public DeviceResponseModel Delete(int deviceId)
+        public DevicesResponseModel Delete(int deviceId)
         {
-            var deviceResponse = new DeviceResponseModel();
+            var deviceResponse = new DevicesResponseModel();
             try
             {
                 var device = _deviceService.GetDeviceByID(deviceId);
@@ -202,7 +141,8 @@ namespace LaboratoryQualityControl.Controllers
                 else
                 {
                     _deviceService.DeleteDevice(device);
-                    deviceResponse.Data.Add(ToModel(device));
+                    var model = _deviceMappingFactory.ToModel(device);
+                    deviceResponse.Data.Add(model);
                 }
             }
             catch (Exception e)
