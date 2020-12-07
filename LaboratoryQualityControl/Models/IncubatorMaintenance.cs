@@ -10,7 +10,7 @@ using LaboratoryQualityControl.Models.Devices;
 namespace LaboratoryQualityControl.Models
 {
     [Table("IncubatorMaintenance")]
-    public class IncubatorMaintenance : BaseEntity
+    public class IncubatorMaintenance : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -47,11 +47,11 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("FunctorUserIncubatorMaintenance")]
-        public virtual User UserFunctor { get; set; }
+        public virtual UserModel UserFunctor { get; set; }
         public virtual DeviceModel Device { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("UserConfirmIncubatorMaintenance")]
-        public virtual User UserConfirm { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel UserConfirm { get; set; }
+        public virtual UserModel User { get; set; }
     }
 }

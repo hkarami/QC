@@ -10,7 +10,7 @@ using LaboratoryQualityControl.Models.Devices;
 namespace LaboratoryQualityControl.Models
 {
     [Table("PhotometerMaintenance")]
-    public class PhotometerMaintenance : BaseEntity
+    public class PhotometerMaintenance : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -61,11 +61,11 @@ namespace LaboratoryQualityControl.Models
         public virtual DeviceModel Device { get; set; }
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("PhotometerMaintenanceUserFunctor")]
-        public virtual User UserFunctor { get; set; }
+        public virtual UserModel UserFunctor { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("PhotometerMaintenanceUserConfirm")]
-        public virtual User UserConfirm { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel UserConfirm { get; set; }
+        public virtual UserModel User { get; set; }
 
         #endregion
 

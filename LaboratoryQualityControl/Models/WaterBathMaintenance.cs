@@ -10,7 +10,7 @@ using LaboratoryQualityControl.Models.Devices;
 namespace LaboratoryQualityControl.Models
 {
     [Table("WaterBathMaintenance")]
-    public class WaterBathMaintenance : BaseEntity
+    public class WaterBathMaintenance : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -47,10 +47,10 @@ namespace LaboratoryQualityControl.Models
         public virtual DeviceModel Device { get; set; } 
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("UserFunctorWaterBathMaintenance")]
-        public virtual User UserFunctor { get; set; }
+        public virtual UserModel UserFunctor { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("UserConfirmWaterBathMaintenance")]
-        public virtual User UserConfirm { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel UserConfirm { get; set; }
+        public virtual UserModel User { get; set; }
     }
 }

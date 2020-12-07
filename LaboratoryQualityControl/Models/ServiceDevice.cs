@@ -11,7 +11,7 @@ namespace LaboratoryQualityControl.Models
 {
     [Table("ServiceDevice")]
 
-    public class ServiceDevice : BaseEntity
+    public class ServiceDevice : BaseModel
     {
         [Key]
         [DisplayName("کد")]
@@ -50,15 +50,15 @@ namespace LaboratoryQualityControl.Models
         public int UserCode { get; set; }
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel User { get; set; }
         public virtual LocationService LocationService { get; set; }
         public virtual DeviceModel Device { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("ConfirmUserServiceDevices")]
-        public virtual User ConfirmUser { get; set; }
+        public virtual UserModel ConfirmUser { get; set; }
         [ForeignKey("UserCodeDisinfectantDevice")]
         [InverseProperty("UserDisinfectantServiceDevices")]
-        public virtual User UserDisinfectantDevice { get; set; }
+        public virtual UserModel UserDisinfectantDevice { get; set; }
         public virtual SupportCompany SupportCompany { get; set; }
     }
 }

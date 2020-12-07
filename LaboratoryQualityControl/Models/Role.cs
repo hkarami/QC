@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("Roles")]
-    public class Role : BaseEntity
+    public class Role : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,6 +18,6 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("نام مجوز")]
         [Required(ErrorMessage = " {0}  نمی تواند خالی باشد ")]
         public String RoleName { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<UserModel> Users { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using LaboratoryQualityControl.Models.Devices;
 namespace LaboratoryQualityControl.Models
 {
     [Table("LogBookDevice")]
-    public class LogBookDevice : BaseEntity
+    public class LogBookDevice : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -34,7 +34,7 @@ namespace LaboratoryQualityControl.Models
         public String Description { get; set; }
          [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel User { get; set; }
         public virtual DeviceModel Device { get; set; }
         public virtual DeviceStatus deviceStatus { get; set; }
         public virtual Shift Shift { get; set; }

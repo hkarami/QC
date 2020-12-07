@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("EducationalCertificate")]
-    public class EducationalCertificate : BaseEntity
+    public class EducationalCertificate : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,6 +23,6 @@ namespace LaboratoryQualityControl.Models
         public int InOrder { get; set; }
         [DisplayName("زمان ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<UserModel> Users { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace LaboratoryQualityControl.Models
 
         }
         public DbSet<DeviceModel> Devices { get; set; }
-        public DbSet<LaboratorySection> LaboratorySections { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<LaboratorySectionModel> LaboratorySections { get; set; }
+        public DbSet<UserModel> User { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<LogBookDevice> LogBookDevices { get; set; }
         public DbSet<LocationService> LocationServices { get; set; }
@@ -31,7 +31,7 @@ namespace LaboratoryQualityControl.Models
         public DbSet<EducationalCertificate> EducationalCertificates { get; set; }
         public DbSet<BloodType> BloodTypes { get; set; }
         public DbSet<EmploymentStatus> EmploymentStatuses { get; set; }
-        public DbSet<DeviceType> DeviceTypes { get; set; }
+        public DbSet<DeviceTypeModel> DeviceTypes { get; set; }
         public DbSet<DeviceStatus> DeviceStatuses { get; set; }
         public DbSet<SupportCompany> SupportCompanies { get; set; }
         public DbSet<Shift> Shifts { get; set; }

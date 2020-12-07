@@ -10,7 +10,7 @@ using LaboratoryQualityControl.Models.Devices;
 namespace LaboratoryQualityControl.Models
 {
     [Table("DeviceMaintenance")]
-    public class DeviceMaintenance : BaseEntity
+    public class DeviceMaintenance : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -40,13 +40,13 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("تاریخ ثبت")]
         public DateTime RecordTime { get; set; }
         [ForeignKey("UserCode")]
-        public virtual User User { get; set; }
+        public virtual UserModel User { get; set; }
         [ForeignKey("UserCodeConfirm")]
         [InverseProperty("ConfirmUserDeviceMaintenances")]
-        public virtual User ConfirmUser { get; set; }
+        public virtual UserModel ConfirmUser { get; set; }
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("FunctorUserDeviceMaintenances")]
-        public virtual User FunctorUser { get; set; }
+        public virtual UserModel FunctorUser { get; set; }
         [ForeignKey("DeviceCode")]
         public virtual DeviceModel Device { get; set; }
     }

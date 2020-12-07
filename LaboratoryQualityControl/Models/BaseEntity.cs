@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LaboratoryQualityControl.Models
+﻿namespace LaboratoryQualityControl.Models
 {
-    public abstract class BaseEntity
+    public abstract class BaseModel
     {
         #region [Ctor]
-        public BaseEntity()
+        public BaseModel()
         {
 
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LaboratoryQualityControl.Models
 {
     [Table("BloodType")]
-    public class BloodType : BaseEntity
+    public class BloodType : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,6 +23,6 @@ namespace LaboratoryQualityControl.Models
         public int InOrder { get; set; }
         [DisplayName("زمان ثبت رکورد")]
         public DateTime RecordTime { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<UserModel> Users { get; set; }
     }
 }

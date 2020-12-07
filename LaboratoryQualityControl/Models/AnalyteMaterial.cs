@@ -29,6 +29,6 @@ namespace LaboratoryQualityControl.Models
         public DateTime RecordTime { get; set; }
         //public virtual Analyte Analyte { get; set; }
         public virtual Material Material { get; set; }
-        public virtual User User { get; set; }
+        public virtual UserModel User { get; set; }
     }
 }

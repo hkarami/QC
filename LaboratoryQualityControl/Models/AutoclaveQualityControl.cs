@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LaboratoryQualityControl.Models.Devices;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using LaboratoryQualityControl.Models.Devices;
 
 namespace LaboratoryQualityControl.Models
 {
     [Table("AutoclaveQualityControl")]
-    public class AutoclaveQualityControl : BaseEntity
+    public class AutoclaveQualityControl : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -52,11 +49,11 @@ namespace LaboratoryQualityControl.Models
         [DisplayName("تاریخ ثبت رکورد")]
         public DateTime RecordTime { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual UserModel User { get; set; }
         public virtual DeviceModel Device { set; get; }
         [ForeignKey("UserCodeFunctor")]
         [InverseProperty("FunctorUserAutoclaveQualityControls")]
-        public virtual User UserFunctor { set; get; }
+        public virtual UserModel UserFunctor { set; get; }
 
 
     }
