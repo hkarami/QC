@@ -1,5 +1,7 @@
 ﻿using LaboratoryQualityControl.DataAccess;
 using LaboratoryQualityControl.Domain;
+using LaboratoryQualityControl.Factories;
+using LaboratoryQualityControl.Factories.Devices;
 using LaboratoryQualityControl.Services.BloodControls;
 using LaboratoryQualityControl.Services.Devices;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +49,7 @@ namespace LaboratoryQualityControl
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IBloodControlService, BloodControlService>();
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IDeviceMappingFactory,DeviceMappingFactory>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                         .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); ;
