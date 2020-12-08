@@ -28,16 +28,15 @@ export default class Create extends React.Component {
     render() {
         return ( 
             <div>
-                <div className='control-pane'>
+                <div className='control-pane' >
                     <h1>تعریف تجهیزات</h1>
                     <DeviceCreateEdit />
                 </div>
-                <div class="col-md-12">
-                    <input type="submit" value="ثبت" class="fas fa-bell" />
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <input type="submit" value="ثبت" class="btn btn-success" />
+                    <input onClick={this.returnDevices} type="submit" value="برگشت" class="btn btn-danger" />
                 </div>
-                <div class="col-md-12">
-                    <input onClick={this.returnDevices} type="submit" value="برگشت" class="fas fa-bell" />
-                </div>
+
             </div>
         );
   }

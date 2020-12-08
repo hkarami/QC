@@ -27,11 +27,13 @@ export default class DevicesList extends React.Component {
     render() {
         return ( 
             <div className='control-pane'>
-                <div class="row">
-                    <div class="col-md-12">
-                        <input onClick={this.addDevice} type="submit" value="اضافه" class="fas fa-bell" />
+                <div class="row" >
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <input onClick={this.addDevice} type="submit" value="اضافه" class="btn btn-primary" />
                     </div>
+                   
                 </div>
+
                 <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} allowSorting={true} allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems} editSettings={this.editing}>
                   <ColumnsDirective>
                     <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='50'></ColumnDirective>

@@ -6,147 +6,59 @@ using LaboratoryQualityControl.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using LaboratoryQualityControl.Services.DeviceTypes;
+using LaboratoryQualityControl.Models.Devices;
+using LaboratoryQualityControl.Factories;
+using LaboratoryQualityControl.Factories.DeviceTypes;
+using LaboratoryQualityControl.Models.Api;
+using LaboratoryQualityControl.Models.DeviceTypes;
 
 namespace LaboratoryQualityControl.Controllers
 {
-    public class DeviceTypesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DeviceTypesController : ControllerBase
     {
-        private readonly LaboratoryQCContext _context;
-
-        public DeviceTypesController(LaboratoryQCContext context)
+        #region [Fields]
+        private IDeviceTypeServie _deviceTypeServie;
+        private IDeviceTypeModelFactory _deviceTypeModelFactory;
+        //private readonly LaboratoryQCContext _context;
+        #endregion
+        #region [Ctor]
+        public DeviceTypesController(IDeviceTypeServie deviceTypeServie,IDeviceTypeModelFactory deviceTypeModelFactory)
         {
-            _context = context;
+            _deviceTypeServie = deviceTypeServie;
+            _deviceTypeModelFactory = deviceTypeModelFactory;
         }
-
-        // GET: DeviceTypes
-        public async Task<IActionResult> Index()
+        #endregion
+        #region [Methods]
+        // GET: api/DeviceType
+        [HttpGet]
+        public DeviceTypesResponseModel Get()
         {
-            return View(await _context.DeviceTypes.ToListAsync());
-        }
-
-        // GET: DeviceTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            var deviceTypeResponse = new DeviceTypesResponseModel();
+            try
             {
-                return NotFound();
-            }
+                var deviceTypes = _deviceTypeServie.GetAllDeviceTypes();
 
-            var deviceType = await _context.DeviceTypes
-                .FirstOrDefaultAsync(m => m.DeviceTypeID == id);
-            if (deviceType == null)
-            {
-                return NotFound();
-            }
-
-            return View(deviceType);
-        }
-
-        // GET: DeviceTypes/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DeviceTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DeviceTypeID,DeviceTypeName,InOrder,RecordTime")] DeviceType deviceType)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(deviceType);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(deviceType);
-        }
-
-        // GET: DeviceTypes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var deviceType = await _context.DeviceTypes.FindAsync(id);
-            if (deviceType == null)
-            {
-                return NotFound();
-            }
-            return View(deviceType);
-        }
-
-        // POST: DeviceTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DeviceTypeID,DeviceTypeName,InOrder,RecordTime")] DeviceType deviceType)
-        {
-            if (id != deviceType.DeviceTypeID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                foreach (var deviceType in deviceTypes)
                 {
-                    _context.Update(deviceType);
-                    await _context.SaveChangesAsync();
+                    var model = _deviceTypeModelFactory.ToModel(deviceType);
+                    deviceTypeResponse.Data.Add(model);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DeviceTypeExists(deviceType.DeviceTypeID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(deviceType);
-        }
 
-        // GET: DeviceTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
+                deviceTypeResponse.Count = deviceTypeResponse.Data.Count;
+                deviceTypeResponse.Items = deviceTypeResponse.Data;
+                //deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError, "UnknownError"));
+            }
+            catch (Exception e)
             {
-                return NotFound();
+                deviceTypeResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError, "UnknownError"));
             }
 
-            var deviceType = await _context.DeviceTypes
-                .FirstOrDefaultAsync(m => m.DeviceTypeID == id);
-            if (deviceType == null)
-            {
-                return NotFound();
-            }
-
-            return View(deviceType);
+            return deviceTypeResponse;
         }
+        #endregion
 
-        // POST: DeviceTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var deviceType = await _context.DeviceTypes.FindAsync(id);
-            _context.DeviceTypes.Remove(deviceType);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool DeviceTypeExists(int id)
-        {
-            return _context.DeviceTypes.Any(e => e.DeviceTypeID == id);
-        }
     }
 }

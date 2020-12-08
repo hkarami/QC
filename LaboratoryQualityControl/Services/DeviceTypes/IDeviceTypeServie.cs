@@ -6,7 +6,7 @@ using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.DeviceTypes
 {
-    interface IDeviceTypeServie
+    public interface IDeviceTypeServie
     {
         #region [Methods]
         DeviceType GetDeviceTypeById(int devicetypeid);
