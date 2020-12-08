@@ -10,15 +10,8 @@ export default class DeviceCreateEdit extends React.Component {
     constructor() {
       super(...arguments);
       //this.hostUrl = ApiURL;
-      //this.data = new DataManager({ url: "https://localhost:44372/api/device", adaptor: new WebApiAdaptor });
-      
-      //this.groupOptions = { showGroupedColumn: true };
-      //this.contextMenuItems = ['AutoFit', 'AutoFitAll',
-      //  'SortAscending', 'SortDescending', 'Copy', 'Edit', 'Delete', 'Save',
-      //  'Cancel', 'PdfExport', 'ExcelExport', 'CsvExport', 'FirstPage', 'PrevPage',
-      //  'LastPage', 'NextPage'];
-      //this.editing = { allowDeleting: true, allowEditing: true };
-
+        this.deviceTypes = new DataManager({ url: "https://localhost:44372/api/devicetypes/", adaptor: new WebApiAdaptor });
+        this.localFields = { text: 'DeviceTypeName', value: 'DeviceTypeID' };
         document.title = "تجهیزات";
     }
 
@@ -32,7 +25,7 @@ export default class DeviceCreateEdit extends React.Component {
                             <TextBoxComponent placeholder="نام دستگاه" cssClass="e-outline" floatLabelType="Auto" />
                         </div>
                         <div className="col">
-                            <ComboBoxComponent id="DeviceType"  placeholder="نوع دستگاه" value={this.value} popupHeight="220px" />
+                            <ComboBoxComponent id="DeviceType" placeholder="نوع دستگاه" dataSource={this.deviceTypes} fields={this.localFields} popupHeight="220px" />
                         </div>
                         <div className="col">
                             <TextBoxComponent placeholder="کارخانه" cssClass="e-outline" floatLabelType="Auto" />
