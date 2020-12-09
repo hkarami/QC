@@ -52,7 +52,7 @@ namespace LaboratoryQualityControl.Controllers
 
             return deviceResponse;
         }
-        DeviceModel
+        //DeviceModel
 
         // GET: api/Device/5
         [HttpGet("{deviceId}", Name = "Get")]
