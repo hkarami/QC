@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LaboratoryQualityControl.Factories.DeviceTypes
 {
-    public interface IDeviceTypeModelFactory : IBaseMappingFactory<DeviceType, DeviceTypeModel>
+    public interface IDeviceTypeMappingFactory : IBaseMappingFactory<DeviceType, DeviceTypeModel>
     {
 
     }

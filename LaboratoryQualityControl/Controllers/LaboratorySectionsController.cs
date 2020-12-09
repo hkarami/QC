@@ -3,150 +3,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LaboratoryQualityControl.Domain;
+using LaboratoryQualityControl.Factories.LaboratorySection;
+using LaboratoryQualityControl.Models.Api;
+using LaboratoryQualityControl.Models.LaboratorySection;
+using LaboratoryQualityControl.Services.LaboratorySections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LaboratoryQualityControl.Controllers
 {
-    public class LaboratorySectionsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LaboratorySectionsController : ControllerBase
     {
-        private readonly LaboratoryQCContext _context;
+        #region [Fields]
+        private ILaboratorySectionService _laboratorySectionService;
+        private ILaboratorySectionMappingFactory _laboratorySectionMappingFactory;
 
-        public LaboratorySectionsController(LaboratoryQCContext context)
+        //private readonly LaboratoryQCContext _context;
+        #endregion
+        #region [Ctor]
+        public LaboratorySectionsController(ILaboratorySectionService laboratorySectionService,ILaboratorySectionMappingFactory laboratorySectionMappingFactory)
         {
-            _context = context;
+            _laboratorySectionService = laboratorySectionService;
+            _laboratorySectionMappingFactory = laboratorySectionMappingFactory;
+            //_context = context;
         }
-
-        // GET: LaboratorySections
-        public async Task<IActionResult> Index()
+        #endregion
+        #region [Methods]
+        // GET: api/LaboratorySections
+        [HttpGet]
+        public LaboratorySectionResponseModel Get()
         {
-            return View(await _context.LaboratorySections.ToListAsync());
-        }
-
-        // GET: LaboratorySections/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            var laboratorySectionResponseModel = new LaboratorySectionResponseModel();
+            try
             {
-                return NotFound();
-            }
-
-            var laboratorySections = await _context.LaboratorySections
-                .FirstOrDefaultAsync(m => m.SectionCodeLab == id);
-            if (laboratorySections == null)
-            {
-                return NotFound();
-            }
-
-            return View(laboratorySections);
-        }
-
-        // GET: LaboratorySections/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: LaboratorySections/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySection laboratorySections)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(laboratorySections);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(laboratorySections);
-        }
-
-        // GET: LaboratorySections/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var laboratorySections = await _context.LaboratorySections.FindAsync(id);
-            if (laboratorySections == null)
-            {
-                return NotFound();
-            }
-            return View(laboratorySections);
-        }
-
-        // POST: LaboratorySections/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SectionCodeLab,SectionNameLab,InOrder,RecordTime")] LaboratorySection laboratorySections)
-        {
-            if (id != laboratorySections.SectionCodeLab)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                var laboratorySections = _laboratorySectionService.GetAllLaboratorySections();
+                foreach (LaboratorySection laboratorySection in laboratorySections)
                 {
-                    _context.Update(laboratorySections);
-                    await _context.SaveChangesAsync();
+                    var model = _laboratorySectionMappingFactory.ToModel(laboratorySection);
+                    laboratorySectionResponseModel.Data.Add(model);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LaboratorySectionsExists(laboratorySections.SectionCodeLab))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                laboratorySectionResponseModel.Count = laboratorySectionResponseModel.Data.Count;
+                laboratorySectionResponseModel.Items = laboratorySectionResponseModel.Data;
             }
-            return View(laboratorySections);
-        }
-
-        // GET: LaboratorySections/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
+            catch(Exception e)
             {
-                return NotFound();
+                laboratorySectionResponseModel.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError, "UnknownError"));
             }
-
-            var laboratorySections = await _context.LaboratorySections
-                .FirstOrDefaultAsync(m => m.SectionCodeLab == id);
-            if (laboratorySections == null)
-            {
-                return NotFound();
-            }
-
-            return View(laboratorySections);
+            return laboratorySectionResponseModel;
         }
+        #endregion
 
-        // POST: LaboratorySections/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var laboratorySections = await _context.LaboratorySections.FindAsync(id);
-            _context.LaboratorySections.Remove(laboratorySections);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool LaboratorySectionsExists(int id)
-        {
-            return _context.LaboratorySections.Any(e => e.SectionCodeLab == id);
-        }
     }
 }

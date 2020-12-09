@@ -6,7 +6,7 @@ using LaboratoryQualityControl.Domain;
 
 namespace LaboratoryQualityControl.Services.LaboratorySections
 {
-    interface ILaboratorySectionService
+    public interface ILaboratorySectionService
     {
         #region [Methods]
         LaboratorySection GetLaboratorySectionById(int sectioncodelab);

@@ -52,6 +52,7 @@ namespace LaboratoryQualityControl.Controllers
 
             return deviceResponse;
         }
+        DeviceModel
 
         // GET: api/Device/5
         [HttpGet("{deviceId}", Name = "Get")]
@@ -80,19 +81,21 @@ namespace LaboratoryQualityControl.Controllers
 
         // POST: api/Device
         [HttpPost]
-        public async Task<DevicesResponseModel> Post([FromBody] Device device)
+        public DevicesResponseModel Post([FromBody] DeviceModel deviceModel)
         {
             var deviceResponse = new DevicesResponseModel();
             try
             {
 
-                if (device == null)
+                if (deviceModel == null)
                     deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.EmptyRequest));
                 else
                 {
-                    await _deviceService.InsertDeviceAsync(device);
-                    var model = _deviceMappingFactory.ToModel(device);
-                    deviceResponse.Data.Add(model);
+                    var device = _deviceMappingFactory.ToDomain(deviceModel);
+                    _deviceService.InsertDevice(device);
+                    //await _deviceService.InsertDeviceAsync(device);
+                    //var model = _deviceMappingFactory.ToModel(device);
+                    deviceResponse.Data.Add(deviceModel);
                 }
             }
             catch (Exception e)
@@ -102,6 +105,30 @@ namespace LaboratoryQualityControl.Controllers
 
             return deviceResponse;
         }
+        //// POST: api/Device
+        //[HttpPost]
+        //public async Task<DevicesResponseModel> Post([FromBody] Device device)
+        //{
+        //    var deviceResponse = new DevicesResponseModel();
+        //    try
+        //    {
+
+        //        if (device == null)
+        //            deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.EmptyRequest));
+        //        else
+        //        {
+        //            await _deviceService.InsertDeviceAsync(device);
+        //            var model = _deviceMappingFactory.ToModel(device);
+        //            deviceResponse.Data.Add(model);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        deviceResponse.Errors.Add(new ApiError(ErrorCodeEnum.UnknownError));
+        //    }
+
+        //    return deviceResponse;
+        //}
 
         // PUT: api/Device/5
         [HttpPut]
