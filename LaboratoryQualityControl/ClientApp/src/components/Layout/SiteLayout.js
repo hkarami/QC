@@ -5,9 +5,9 @@
         @Html.Partial("_Head.cshtml")
         @RenderSection("Head",required:false)
     </head>
-    <body  class="hold-transition sidebar-mini">
+    <body  className="hold-transition sidebar-mini">
         <!-- wrapper -->
-        <div class="wrapper">
+        <div className="wrapper">
             <!-- Navbar -->
             @Html.Partial("_Header.cshtml");
             <!-- /.navbar -->
@@ -17,14 +17,14 @@
             <!-- /Main Sidebar Container -->
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+            <div className="content-wrapper">
                     <!-- Content Header (Page header) -->
                     @Html.Partial("_ContentHeader.cshtml")
                     <!-- /.content-header -->
 
                     <!-- Main content -->
-                    <section class="content">
-                        <div class="container-fluid">              
+                    <section className="content">
+                        <div className="container-fluid">              
                             @RenderBody();
                         </div><!-- /.container-fluid -->
                     </section>                    
