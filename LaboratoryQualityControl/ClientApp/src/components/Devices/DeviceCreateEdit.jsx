@@ -12,6 +12,8 @@ export default class DeviceCreateEdit extends React.Component {
       //this.hostUrl = ApiURL;
         this.deviceTypes = new DataManager({ url: "https://localhost:44372/api/devicetypes/", adaptor: new WebApiAdaptor });
         this.localFields = { text: 'DeviceTypeName', value: 'DeviceTypeID' };
+        this.laboratorySections = new DataManager({ url: "https://localhost:44372/api/LaboratorySections/", adaptor: new WebApiAdaptor });
+        this.FieldslaboratorySections = { text: 'SectionNameLab', value: 'SectionCodeLab' };
         document.title = "تجهیزات";
     }
 
@@ -78,7 +80,7 @@ export default class DeviceCreateEdit extends React.Component {
                     </div>
                     <div className="row custom-margin custom-padding-5 material2">
                         <div className="col-3">
-                            <ComboBoxComponent id="LaboratorySections" placeholder="بخش آزمایشگاه" value={this.value} popupHeight="220px" />
+                            <ComboBoxComponent id="LaboratorySections" placeholder="بخش آزمایشگاه" dataSource={this.laboratorySections} fields={this.FieldslaboratorySections} popupHeight="220px" />
                         </div>
                         <div className="col-9">
                             <TextBoxComponent placeholder="سایر" cssClass="e-outline" floatLabelType="Auto" />

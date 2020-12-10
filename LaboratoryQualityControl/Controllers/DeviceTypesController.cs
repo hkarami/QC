@@ -21,14 +21,14 @@ namespace LaboratoryQualityControl.Controllers
     {
         #region [Fields]
         private IDeviceTypeServie _deviceTypeServie;
-        private IDeviceTypeModelFactory _deviceTypeModelFactory;
+        private IDeviceTypeMappingFactory _deviceTypeMappingFactory;
         //private readonly LaboratoryQCContext _context;
         #endregion
         #region [Ctor]
-        public DeviceTypesController(IDeviceTypeServie deviceTypeServie,IDeviceTypeModelFactory deviceTypeModelFactory)
+        public DeviceTypesController(IDeviceTypeServie deviceTypeServie,IDeviceTypeMappingFactory deviceTypeMappingFactory)
         {
             _deviceTypeServie = deviceTypeServie;
-            _deviceTypeModelFactory = deviceTypeModelFactory;
+            _deviceTypeMappingFactory = deviceTypeMappingFactory;
         }
         #endregion
         #region [Methods]
@@ -43,7 +43,7 @@ namespace LaboratoryQualityControl.Controllers
 
                 foreach (var deviceType in deviceTypes)
                 {
-                    var model = _deviceTypeModelFactory.ToModel(deviceType);
+                    var model = _deviceTypeMappingFactory.ToModel(deviceType);
                     deviceTypeResponse.Data.Add(model);
                 }
 

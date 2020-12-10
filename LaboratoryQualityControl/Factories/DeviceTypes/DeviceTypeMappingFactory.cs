@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LaboratoryQualityControl.Factories.DeviceTypes
 {
-    public class DeviceTypeMappingFactory : IDeviceTypeModelFactory
+    public class DeviceTypeMappingFactory : IDeviceTypeMappingFactory
     {
         public DeviceType ToDomain(DeviceTypeModel model)
         {
